@@ -1,0 +1,23 @@
+{
+  "slug": "sanguo",
+  "title": "三国法精讲",
+  "pages": 303,
+  "pageW": 493.2,
+  "pageH": 751.2,
+  "imgW": 1400,
+  "imgH": 2132,
+  "chunkSize": 20,
+  "chunkCount": 16,
+  "tocPages": [
+    6,
+    7
+  ],
+  "imageTemplate": "pages/{p:04d}.webp",
+  "textTemplate": "text/chunk-{c:04d}.json",
+  "searchVersion": 2,
+  "searchBuckets": 256,
+  "searchManifest": "search.json",
+  "version": "3.1.0",
+  "builtAt": "2026-10-17 22:39:32",
+  "source": "sanguo_jingjiang.pdf"
+}
