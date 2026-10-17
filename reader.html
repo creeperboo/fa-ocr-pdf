@@ -33,7 +33,7 @@
   #viewer{flex:1; overflow:auto; padding:16px 20px 40px; position:relative;}
   .page-wrap{position:relative; margin:0 auto 16px; box-shadow:0 2px 8px rgba(0,0,0,.12); background:#fff;}
   .page-wrap canvas{display:block; width:100%; height:auto;}
-  .page-wrap .textLayer{position:absolute; inset:0; overflow:hidden; line-height:1; opacity:.35; mix-blend-mode:multiply;}
+  .page-wrap .textLayer{position:absolute; inset:0; overflow:hidden; line-height:1; opacity:.35; mix-blend-mode:multiply; user-select:text; -webkit-user-select:text;}
   .page-wrap .textLayer span{position:absolute; white-space:pre; transform-origin:0 0; cursor:text;}
   .page-wrap .textLayer .hl{background:var(--hl); opacity:1;}
   .page-wrap .page-label{position:absolute; bottom:4px; right:8px; font-size:12px; color:#8a919f; background:rgba(255,255,255,.85); padding:0 6px; border-radius:4px;}
@@ -91,7 +91,7 @@ const totalPagesSpan = document.getElementById("totalPages");
 const searchBox = document.getElementById("searchBox");
 const zoomSel = document.getElementById("zoomSel");
 
-let pdfDoc = null, currentScale = 1, renderedPages = new Map(), searchPageStart = 1, pendingHighlight = null;
+let pdfDoc = null, currentScale = "auto", renderedPages = new Map(), searchPageStart = 1, pendingHighlight = null;
 
 function showToast(msg, ms) { toast.textContent = msg; toast.style.display = "block"; clearTimeout(showToast._t); showToast._t = setTimeout(() => toast.style.display = "none", ms || 2200); }
 
@@ -149,6 +149,7 @@ async function openPdf(data, filename, url) {
   loadOutline();
   handleUrlParams();
   loading.style.display = "none";
+  syncZoomSel();
   showToast("已加载 " + pdfDoc.numPages + " 页" + (filename ? "：" + filename : ""));
 }
 
@@ -194,8 +195,8 @@ async function renderPage(n) {
   try {
     const page = await pdfDoc.getPage(n);
     const baseWidth = wrap.clientWidth || (viewer.clientWidth - 40);
-    currentScale = baseWidth / page.getViewport({ scale: 1 }).width;
-    const vp = page.getViewport({ scale: currentScale });
+    const scale = currentScale === "auto" ? baseWidth / page.getViewport({ scale: 1 }).width : currentScale;
+    const vp = page.getViewport({ scale });
     const canvas = wrap.querySelector("canvas");
     canvas.width = Math.floor(vp.width * window.devicePixelRatio || 1);
     canvas.height = Math.floor(vp.height * (window.devicePixelRatio || 1));
@@ -207,6 +208,7 @@ async function renderPage(n) {
     /* 文本层（可选取复制） */
     const textDiv = wrap.querySelector(".textLayer");
     textDiv.style.width = vp.width + "px"; textDiv.style.height = vp.height + "px";
+    textDiv.style.setProperty("--scale-factor", scale);
     const tl = pdfjsLib.renderTextLayer({
       textContentSource: page.streamTextContent(),
       container: textDiv,
@@ -219,10 +221,10 @@ async function renderPage(n) {
       if (ann.subtype !== "Link") continue;
       const a = document.createElement("a");
       a.style.position = "absolute";
-      a.style.left = (ann.rect[0] * currentScale) + "px";
-      a.style.top = (vp.height - ann.rect[3] * currentScale) + "px";
-      a.style.width = ((ann.rect[2] - ann.rect[0]) * currentScale) + "px";
-      a.style.height = ((ann.rect[3] - ann.rect[1]) * currentScale) + "px";
+      a.style.left = (ann.rect[0] * scale) + "px";
+      a.style.top = (vp.height - ann.rect[3] * scale) + "px";
+      a.style.width = ((ann.rect[2] - ann.rect[0]) * scale) + "px";
+      a.style.height = ((ann.rect[3] - ann.rect[1]) * scale) + "px";
       a.style.cursor = "pointer";
       if (ann.url) {
         const u = ann.url.trim();
@@ -389,9 +391,30 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
   e.target.value = "";
 });
 document.getElementById("btnOutline").addEventListener("click", () => outlinePanel.classList.toggle("open"));
-document.getElementById("btnZoomIn").addEventListener("click", () => { if (pdfDoc) currentScale = Math.min(4, currentScale * 1.2); reRenderAll(); });
-document.getElementById("btnZoomOut").addEventListener("click", () => { if (pdfDoc) currentScale = Math.max(0.3, currentScale / 1.2); reRenderAll(); });
-zoomSel.addEventListener("change", () => { if (pdfDoc) { currentScale = zoomSel.value === "auto" ? "auto" : parseFloat(zoomSel.value); reRenderAll(); } });
+function syncZoomSel() {
+  const std = [0.5, 0.75, 1, 1.25, 1.5, 2];
+  if (currentScale === "auto") { zoomSel.value = "auto"; return; }
+  let best = std[0];
+  for (const s of std) if (Math.abs(s - currentScale) < Math.abs(best - currentScale)) best = s;
+  zoomSel.value = String(best);
+}
+document.getElementById("btnZoomIn").addEventListener("click", () => {
+  if (!pdfDoc) return;
+  currentScale = (currentScale === "auto" ? 1 : currentScale) * 1.2;
+  currentScale = Math.min(4, currentScale);
+  syncZoomSel(); reRenderAll();
+});
+document.getElementById("btnZoomOut").addEventListener("click", () => {
+  if (!pdfDoc) return;
+  currentScale = (currentScale === "auto" ? 1 : currentScale) / 1.2;
+  currentScale = Math.max(0.3, currentScale);
+  syncZoomSel(); reRenderAll();
+});
+zoomSel.addEventListener("change", () => {
+  if (!pdfDoc) return;
+  currentScale = zoomSel.value === "auto" ? "auto" : parseFloat(zoomSel.value);
+  reRenderAll();
+});
 searchBox.addEventListener("keydown", (e) => { if (e.key === "Enter") searchKeyword(searchBox.value.trim()); });
 pageNumInput.addEventListener("change", () => gotoPage(parseInt(pageNumInput.value, 10) || 1));
 
