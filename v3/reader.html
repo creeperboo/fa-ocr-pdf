@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>阅读 · 法考 OCR 网页书</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="stylesheet" href="assets/reader.css?v=3.2.1">
+</head>
+<body class="reader">
+
+<header class="topbar" id="topbar">
+  <button class="icon-btn" id="btnToc" title="目录" aria-label="目录">☰</button>
+  <a class="brand" href="./index.html" title="返回书目">法考书</a>
+  <div class="book-name" id="bookName">加载中…</div>
+  <div class="top-spacer"></div>
+
+  <div class="pager" role="group" aria-label="翻页">
+    <button class="icon-btn" id="btnPrev" title="上一页" aria-label="上一页">‹</button>
+    <input id="pageInput" inputmode="numeric" autocomplete="off" aria-label="页码" value="1">
+    <span class="page-total">/ <span id="pageTotal">–</span></span>
+    <button class="icon-btn" id="btnNext" title="下一页" aria-label="下一页">›</button>
+  </div>
+
+  <button class="text-btn" id="btnSearch" title="全书搜索 (Ctrl+F)">搜索</button>
+
+  <div class="seg" id="modeSeg" role="group" aria-label="阅读模式">
+    <button data-mode="single" class="active">单页</button>
+    <button data-mode="scroll">连续</button>
+  </div>
+
+  <div class="zoom-group" id="zoomGroup" role="group" aria-label="缩放">
+    <button class="icon-btn" id="zoomOut" title="缩小" aria-label="缩小">−</button>
+    <button class="zoom-label" id="zoomLabel" title="恢复适宽">适宽</button>
+    <button class="icon-btn" id="zoomIn" title="放大" aria-label="放大">+</button>
+    <button class="text-btn ghost" id="fitPage" title="整页显示">整页</button>
+  </div>
+
+  <button class="text-btn ghost only-wide" id="btnCopyText" title="复制本页识别文字">复制本页</button>
+  <button class="text-btn ghost only-wide" id="btnLink" title="复制这一页的链接">链接</button>
+
+  <div class="menu-wrap">
+    <button class="icon-btn" id="btnMore" title="更多" aria-label="更多">⋯</button>
+    <div class="menu hidden" id="moreMenu">
+      <button data-act="mode-single">单页阅读</button>
+      <button data-act="mode-scroll">连续滚动</button>
+      <div class="menu-sep"></div>
+      <button data-act="fit-width">适宽显示</button>
+      <button data-act="fit-page">整页显示</button>
+      <button data-act="zoom-in">放大</button>
+      <button data-act="zoom-out">缩小</button>
+      <div class="menu-sep"></div>
+      <button data-act="copy-text">复制本页文字</button>
+      <button data-act="copy-link">复制本页链接</button>
+      <button data-act="copy-section">复制当前章节链接</button>
+      <button data-act="home">返回书目</button>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="panel toc-panel" id="tocPanel" aria-label="目录">
+    <div class="panel-head">
+      <span>目录</span>
+      <button class="icon-btn" id="tocClose" aria-label="关闭目录">×</button>
+    </div>
+    <div class="panel-tools">
+      <input id="tocFilter" placeholder="筛选章节…" autocomplete="off">
+    </div>
+    <div class="toc-list" id="tocList"></div>
+  </aside>
+
+  <main class="viewport" id="viewport">
+    <div class="stage" id="stage"></div>
+    <div class="reader-loading" id="readerLoading">
+      <div class="spinner"></div>
+      <div id="loadingText">正在打开…</div>
+    </div>
+  </main>
+</div>
+
+<aside class="panel search-panel" id="searchPanel" aria-label="搜索">
+  <div class="panel-head">
+    <span>全书搜索</span>
+    <button class="icon-btn" id="searchClose" aria-label="关闭搜索">×</button>
+  </div>
+  <div class="search-box">
+    <input id="searchInput" type="search" placeholder="搜索正文或章节名，如：善意取得" autocomplete="off" enterkeyhint="search">
+    <kbd>Ctrl F</kbd>
+  </div>
+  <div class="search-meta" id="searchMeta"></div>
+  <div class="search-results" id="searchResults"></div>
+</aside>
+
+<div class="backdrop" id="backdrop"></div>
+<div class="sel-toolbar hidden" id="selToolbar" role="toolbar" aria-label="选中文字操作">
+  <button type="button" class="sel-primary" id="selLink">复制这段链接</button>
+  <button type="button" id="selText">复制文字</button>
+</div>
+<div class="copy-fallback hidden" id="copyFallback" role="dialog" aria-modal="true" aria-labelledby="copyFallbackTitle">
+  <div class="cf-card">
+    <div class="cf-title" id="copyFallbackTitle">自动复制没有成功</div>
+    <p class="cf-hint">请长按下面的内容，全选后复制。</p>
+    <textarea id="copyFallbackText" readonly spellcheck="false"></textarea>
+    <div class="cf-actions">
+      <button type="button" id="copyFallbackClose">关闭</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="assets/reader.js?v=3.2.1"></script>
+</body>
+</html>

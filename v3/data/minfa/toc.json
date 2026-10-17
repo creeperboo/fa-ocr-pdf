@@ -1,0 +1,828 @@
+[
+{
+"level": 1,
+"title": "第一编 总则",
+"page": 12,
+"y": 640.1,
+"printedPage": 5
+},
+{
+"level": 2,
+"title": "第一章 绪论",
+"page": 14,
+"y": 0.0,
+"printedPage": 5
+},
+{
+"level": 3,
+"title": "第一节 民法概述",
+"page": 14,
+"y": 815.1,
+"printedPage": 5
+},
+{
+"level": 3,
+"title": "第二节 民法的调整对象",
+"page": 23,
+"y": 1124.5,
+"printedPage": 14
+},
+{
+"level": 3,
+"title": "第三节 民法的基本原则",
+"page": 25,
+"y": 410.9,
+"printedPage": 16
+},
+{
+"level": 2,
+"title": "第二章 民事法律关系",
+"page": 31,
+"y": 0.0,
+"printedPage": 22
+},
+{
+"level": 3,
+"title": "第一节 民事法律关系概述",
+"page": 31,
+"y": 1160.7,
+"printedPage": 22
+},
+{
+"level": 3,
+"title": "第二节 民事法律关系的要素",
+"page": 35,
+"y": 173.5,
+"printedPage": 26
+},
+{
+"level": 3,
+"title": "第三节 民事权利、民事义务",
+"page": 38,
+"y": 657.2,
+"printedPage": 29
+},
+{
+"level": 3,
+"title": "第四节 民事责任",
+"page": 45,
+"y": 388.1,
+"printedPage": 36
+},
+{
+"level": 3,
+"title": "第五节 民事法律事实",
+"page": 47,
+"y": 1393.5,
+"printedPage": 38
+},
+{
+"level": 2,
+"title": "第三章 自然人",
+"page": 52,
+"y": 0.0,
+"printedPage": 43
+},
+{
+"level": 3,
+"title": "第一节 自然人的民事权利能力",
+"page": 53,
+"y": 169.0,
+"printedPage": 44
+},
+{
+"level": 3,
+"title": "第二节 自然人的民事行为能力",
+"page": 56,
+"y": 156.5,
+"printedPage": 47
+},
+{
+"level": 3,
+"title": "第三节 监护",
+"page": 58,
+"y": 976.6,
+"printedPage": 49
+},
+{
+"level": 3,
+"title": "第四节 宣告失踪和宣告死亡",
+"page": 65,
+"y": 163.9,
+"printedPage": 56
+},
+{
+"level": 3,
+"title": "第五节 个体工商户、农村承包经营户和住所",
+"page": 69,
+"y": 168.3,
+"printedPage": 60
+},
+{
+"level": 2,
+"title": "第四章 法人",
+"page": 71,
+"y": 0.0,
+"printedPage": 62
+},
+{
+"level": 3,
+"title": "第一节 法人概述",
+"page": 71,
+"y": 1253.2,
+"printedPage": 62
+},
+{
+"level": 3,
+"title": "第二节 法人的具体类型",
+"page": 73,
+"y": 964.2,
+"printedPage": 64
+},
+{
+"level": 3,
+"title": "第三节 法人的设立、变更和终止",
+"page": 78,
+"y": 654.6,
+"printedPage": 69
+},
+{
+"level": 2,
+"title": "第五章 非法人组织",
+"page": 84,
+"y": 0.0,
+"printedPage": 75
+},
+{
+"level": 3,
+"title": "第一节 非法人组织概述",
+"page": 84,
+"y": 744.7,
+"printedPage": 75
+},
+{
+"level": 3,
+"title": "第二节 合伙企业",
+"page": 85,
+"y": 351.6,
+"printedPage": 76
+},
+{
+"level": 2,
+"title": "第六章 民事法律行为",
+"page": 88,
+"y": 0.0,
+"printedPage": 79
+},
+{
+"level": 3,
+"title": "第一节 民事法律行为概述",
+"page": 89,
+"y": 166.5,
+"printedPage": 80
+},
+{
+"level": 3,
+"title": "第二节 意思表示",
+"page": 93,
+"y": 473.9,
+"printedPage": 84
+},
+{
+"level": 3,
+"title": "第三节 民事法律行为的成立和有效",
+"page": 96,
+"y": 1088.5,
+"printedPage": 87
+},
+{
+"level": 3,
+"title": "第四节 可撤销的民事法律行为",
+"page": 98,
+"y": 875.0,
+"printedPage": 89
+},
+{
+"level": 3,
+"title": "第五节 效力未定的民事法律行为",
+"page": 103,
+"y": 934.7,
+"printedPage": 94
+},
+{
+"level": 3,
+"title": "第六节 无效的民事法律行为",
+"page": 105,
+"y": 1222.0,
+"printedPage": 96
+},
+{
+"level": 3,
+"title": "第七节 附条件和附期限的民事法律行为",
+"page": 112,
+"y": 615.6,
+"printedPage": 103
+},
+{
+"level": 2,
+"title": "第七章 代理",
+"page": 116,
+"y": 0.0,
+"printedPage": 107
+},
+{
+"level": 3,
+"title": "第一节 代理概述",
+"page": 116,
+"y": 1013.5,
+"printedPage": 107
+},
+{
+"level": 3,
+"title": "第二节 代理权",
+"page": 121,
+"y": 468.1,
+"printedPage": 112
+},
+{
+"level": 3,
+"title": "第三节 无权代理",
+"page": 123,
+"y": 1183.5,
+"printedPage": 114
+},
+{
+"level": 2,
+"title": "第八章 诉讼时效和期间",
+"page": 127,
+"y": 0.0,
+"printedPage": 118
+},
+{
+"level": 3,
+"title": "第一节 诉讼时效",
+"page": 127,
+"y": 900.2,
+"printedPage": 118
+},
+{
+"level": 3,
+"title": "第二节 期间",
+"page": 134,
+"y": 683.3,
+"printedPage": 125
+},
+{
+"level": 1,
+"title": "第二编 人格权",
+"page": 136,
+"y": 668.4,
+"printedPage": 129
+},
+{
+"level": 2,
+"title": "第一章 人格权概述",
+"page": 138,
+"y": 0.0,
+"printedPage": 129
+},
+{
+"level": 2,
+"title": "第二章 具体人格权",
+"page": 142,
+"y": 0.0,
+"printedPage": 133
+},
+{
+"level": 1,
+"title": "第三编 物权",
+"page": 156,
+"y": 650.2,
+"printedPage": 150
+},
+{
+"level": 2,
+"title": "第一章 物权通则",
+"page": 159,
+"y": 0.0,
+"printedPage": 150
+},
+{
+"level": 3,
+"title": "第一节 物权概述",
+"page": 159,
+"y": 893.7,
+"printedPage": 150
+},
+{
+"level": 3,
+"title": "第二节 物权法的基本原则",
+"page": 162,
+"y": 1223.2,
+"printedPage": 153
+},
+{
+"level": 3,
+"title": "第三节 物权的变动",
+"page": 165,
+"y": 153.6,
+"printedPage": 156
+},
+{
+"level": 3,
+"title": "第四节 不动产登记",
+"page": 172,
+"y": 1188.8,
+"printedPage": 163
+},
+{
+"level": 3,
+"title": "第五节 物权的保护",
+"page": 176,
+"y": 1193.8,
+"printedPage": 167
+},
+{
+"level": 2,
+"title": "第二章 所有权",
+"page": 180,
+"y": 0.0,
+"printedPage": 171
+},
+{
+"level": 3,
+"title": "第一节 所有权概述",
+"page": 180,
+"y": 1012.7,
+"printedPage": 171
+},
+{
+"level": 3,
+"title": "第二节 所有权的取得",
+"page": 183,
+"y": 169.9,
+"printedPage": 174
+},
+{
+"level": 3,
+"title": "第三节 业主的建筑物区分所有权",
+"page": 190,
+"y": 895.6,
+"printedPage": 181
+},
+{
+"level": 3,
+"title": "第四节 相邻关系",
+"page": 195,
+"y": 161.5,
+"printedPage": 186
+},
+{
+"level": 3,
+"title": "第五节 共有",
+"page": 197,
+"y": 872.1,
+"printedPage": 188
+},
+{
+"level": 2,
+"title": "第三章 用益物权",
+"page": 204,
+"y": 0.0,
+"printedPage": 195
+},
+{
+"level": 3,
+"title": "第一节 用益物权概述",
+"page": 204,
+"y": 1300.4,
+"printedPage": 195
+},
+{
+"level": 3,
+"title": "第二节 土地承包经营权",
+"page": 205,
+"y": 1007.6,
+"printedPage": 196
+},
+{
+"level": 3,
+"title": "第三节 建设用地使用权",
+"page": 208,
+"y": 156.8,
+"printedPage": 199
+},
+{
+"level": 3,
+"title": "第四节 宅基地使用权",
+"page": 209,
+"y": 1282.8,
+"printedPage": 200
+},
+{
+"level": 3,
+"title": "第五节 居住权",
+"page": 210,
+"y": 1361.4,
+"printedPage": 201
+},
+{
+"level": 3,
+"title": "第六节 地役权",
+"page": 212,
+"y": 590.6,
+"printedPage": 203
+},
+{
+"level": 2,
+"title": "第四章 担保物权",
+"page": 215,
+"y": 0.0,
+"printedPage": 206
+},
+{
+"level": 3,
+"title": "第一节 担保物权概述",
+"page": 215,
+"y": 1213.0,
+"printedPage": 206
+},
+{
+"level": 3,
+"title": "第二节 抵押权",
+"page": 219,
+"y": 161.9,
+"printedPage": 210
+},
+{
+"level": 3,
+"title": "第三节 质权",
+"page": 231,
+"y": 1362.4,
+"printedPage": 222
+},
+{
+"level": 3,
+"title": "第四节 留置权",
+"page": 237,
+"y": 401.4,
+"printedPage": 228
+},
+{
+"level": 3,
+"title": "第五节 担保权的竞合",
+"page": 240,
+"y": 1256.5,
+"printedPage": 231
+},
+{
+"level": 2,
+"title": "第五章 占有",
+"page": 244,
+"y": 0.0,
+"printedPage": 235
+},
+{
+"level": 3,
+"title": "第一节 占有概述",
+"page": 244,
+"y": 826.5,
+"printedPage": 235
+},
+{
+"level": 3,
+"title": "第二节 占有的效力和保护",
+"page": 246,
+"y": 1195.0,
+"printedPage": 237
+},
+{
+"level": 1,
+"title": "第四编 知识产权",
+"page": 250,
+"y": 636.5,
+"printedPage": 243
+},
+{
+"level": 2,
+"title": "第一章 知识产权概述",
+"page": 252,
+"y": 0.0,
+"printedPage": 243
+},
+{
+"level": 2,
+"title": "第二章 著作权",
+"page": 255,
+"y": 0.0,
+"printedPage": 246
+},
+{
+"level": 2,
+"title": "第三章 专利权",
+"page": 268,
+"y": 0.0,
+"printedPage": 259
+},
+{
+"level": 2,
+"title": "第四章 商标权",
+"page": 274,
+"y": 0.0,
+"printedPage": 265
+},
+{
+"level": 1,
+"title": "第五编 合同",
+"page": 280,
+"y": 667.4,
+"printedPage": 274
+},
+{
+"level": 2,
+"title": "第一章 合同通则",
+"page": 283,
+"y": 0.0,
+"printedPage": 274
+},
+{
+"level": 3,
+"title": "第一节 债的概述",
+"page": 284,
+"y": 166.7,
+"printedPage": 275
+},
+{
+"level": 3,
+"title": "第二节 合同概述",
+"page": 287,
+"y": 901.5,
+"printedPage": 278
+},
+{
+"level": 3,
+"title": "第三节 合同的订立",
+"page": 292,
+"y": 769.6,
+"printedPage": 283
+},
+{
+"level": 3,
+"title": "第四节 合同的效力",
+"page": 304,
+"y": 824.2,
+"printedPage": 295
+},
+{
+"level": 3,
+"title": "第五节 合同的履行",
+"page": 307,
+"y": 481.9,
+"printedPage": 298
+},
+{
+"level": 3,
+"title": "第六节 合同的保全",
+"page": 319,
+"y": 990.1,
+"printedPage": 310
+},
+{
+"level": 3,
+"title": "第七节 合同的变更和转让",
+"page": 324,
+"y": 802.3,
+"printedPage": 315
+},
+{
+"level": 3,
+"title": "第八节 合同权利义务的终止",
+"page": 332,
+"y": 920.2,
+"printedPage": 323
+},
+{
+"level": 3,
+"title": "第九节 合同的解除",
+"page": 339,
+"y": 622.8,
+"printedPage": 330
+},
+{
+"level": 3,
+"title": "第十节 违约责任",
+"page": 343,
+"y": 1244.8,
+"printedPage": 334
+},
+{
+"level": 2,
+"title": "第二章 典型合同",
+"page": 352,
+"y": 0.0,
+"printedPage": 343
+},
+{
+"level": 3,
+"title": "第一节 转移财产权的合同",
+"page": 353,
+"y": 172.8,
+"printedPage": 344
+},
+{
+"level": 3,
+"title": "第二节 提供融资相关合同",
+"page": 374,
+"y": 157.8,
+"printedPage": 365
+},
+{
+"level": 3,
+"title": "第三节 完成工作交付成果的合同",
+"page": 386,
+"y": 167.5,
+"printedPage": 377
+},
+{
+"level": 3,
+"title": "第四节 提供劳务的合同",
+"page": 391,
+"y": 1002.0,
+"printedPage": 382
+},
+{
+"level": 3,
+"title": "第五节 提供服务的合同",
+"page": 399,
+"y": 159.0,
+"printedPage": 390
+},
+{
+"level": 2,
+"title": "第三章 准合同",
+"page": 411,
+"y": 0.0,
+"printedPage": 402
+},
+{
+"level": 3,
+"title": "第一节 无因管理",
+"page": 411,
+"y": 743.5,
+"printedPage": 402
+},
+{
+"level": 3,
+"title": "第二节 不当得利",
+"page": 413,
+"y": 1410.4,
+"printedPage": 404
+},
+{
+"level": 1,
+"title": "第六编 婚姻家庭与继承",
+"page": 418,
+"y": 681.2,
+"printedPage": 411
+},
+{
+"level": 2,
+"title": "第一章 婚姻家庭",
+"page": 420,
+"y": 0.0,
+"printedPage": 411
+},
+{
+"level": 3,
+"title": "第一节 亲属",
+"page": 420,
+"y": 1086.2,
+"printedPage": 411
+},
+{
+"level": 3,
+"title": "第二节 结婚",
+"page": 423,
+"y": 325.4,
+"printedPage": 414
+},
+{
+"level": 3,
+"title": "第三节 家庭关系",
+"page": 427,
+"y": 444.8,
+"printedPage": 418
+},
+{
+"level": 3,
+"title": "第四节 离婚",
+"page": 434,
+"y": 160.8,
+"printedPage": 425
+},
+{
+"level": 3,
+"title": "第五节 收养",
+"page": 444,
+"y": 521.7,
+"printedPage": 435
+},
+{
+"level": 2,
+"title": "第二章 继承",
+"page": 448,
+"y": 0.0,
+"printedPage": 439
+},
+{
+"level": 3,
+"title": "第一节 继承概述",
+"page": 448,
+"y": 929.2,
+"printedPage": 439
+},
+{
+"level": 3,
+"title": "第二节 法定继承",
+"page": 453,
+"y": 160.3,
+"printedPage": 444
+},
+{
+"level": 3,
+"title": "第三节 遗嘱继承与遗赠",
+"page": 458,
+"y": 1001.9,
+"printedPage": 449
+},
+{
+"level": 3,
+"title": "第四节 遗产的处理",
+"page": 462,
+"y": 587.1,
+"printedPage": 453
+},
+{
+"level": 1,
+"title": "第七编 侵权责任",
+"page": 468,
+"y": 648.0,
+"printedPage": 461
+},
+{
+"level": 2,
+"title": "第一章 侵权责任通则",
+"page": 470,
+"y": 0.0,
+"printedPage": 461
+},
+{
+"level": 3,
+"title": "第一节 侵权责任概述",
+"page": 470,
+"y": 839.4,
+"printedPage": 461
+},
+{
+"level": 3,
+"title": "第二节 侵权损害赔偿",
+"page": 475,
+"y": 1188.9,
+"printedPage": 466
+},
+{
+"level": 3,
+"title": "第三节 数人侵权责任的承担",
+"page": 479,
+"y": 1157.1,
+"printedPage": 470
+},
+{
+"level": 3,
+"title": "第四节 侵权责任的抗辩事由",
+"page": 483,
+"y": 440.8,
+"printedPage": 474
+},
+{
+"level": 2,
+"title": "第二章 责任主体的特殊规定",
+"page": 486,
+"y": 0.0,
+"printedPage": 477
+},
+{
+"level": 2,
+"title": "第三章 各种具体侵权责任类型",
+"page": 495,
+"y": 0.0,
+"printedPage": 486
+},
+{
+"level": 1,
+"title": "附录 民法重要专题总结",
+"page": 510,
+"y": 252.1,
+"printedPage": 501
+}
+]

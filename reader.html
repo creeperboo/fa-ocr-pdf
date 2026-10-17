@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OCR PDF 网页书阅读器</title>
+<meta name="robots" content="noindex,nofollow">
+<script>
+/* 民法一本通已迁移到 v3 静态网页书；其余 6 本继续走旧 PDF.js 阅读器。 */
+(function () {
+  try {
+    var params = new URLSearchParams(location.search);
+    var src = params.get("src") || "";
+    if (!/minfa/i.test(src)) return;
+    var target = "v3/reader.html?book=minfa";
+    var page = parseInt(params.get("page"), 10);
+    if (page > 0) target += "&page=" + page;
+    var q = params.get("q");
+    if (q) target += "&q=" + encodeURIComponent(q);
+    location.replace(target);
+  } catch (e) {}
+})();
+</script>
 <style>
   :root{
     --bg:#f2f3f5; --panel:#ffffff; --border:#d9dce1; --text:#1f2329;

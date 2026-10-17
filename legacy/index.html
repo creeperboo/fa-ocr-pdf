@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 法考 · OCR 网页书</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%232563eb'/%3E%3Ctext x='12' y='17' font-size='13' fill='white' text-anchor='middle' font-family='sans-serif'%3E%E6%B3%95%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --ink: #1c2333;
+    --sub: #5c667a;
+    --accent: #2563eb;
+    --accent-soft: #eaf0fe;
+    --border: #e3e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 34px; }
+  header h1 { font-size: 28px; font-weight: 800; letter-spacing: 1px; }
+  header p { color: var(--sub); margin-top: 10px; font-size: 14px; line-height: 1.7; }
+  .tag { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 4px 14px; font-size: 12px; font-weight: 600; margin-top: 12px; }
+  .group { margin: 30px 0 14px; font-size: 15px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+  .group::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+  .cards { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 640px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 18px 14px;
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,35,51,.08); border-color: var(--accent); }
+  .card .name { font-size: 17px; font-weight: 700; }
+  .card .author { font-size: 13px; color: var(--sub); margin-top: 5px; }
+  .card .meta { font-size: 12px; color: var(--sub); margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .card .meta b { color: var(--accent); font-weight: 600; }
+  .card a.open {
+    display: inline-block; margin-top: 14px; text-decoration: none;
+    background: var(--accent); color: #fff; font-size: 13px; font-weight: 600;
+    padding: 7px 16px; border-radius: 8px;
+  }
+  .card a.open:hover { opacity: .9; }
+  .hint {
+    margin-top: 36px; background: #fff; border: 1px dashed var(--border); border-radius: 12px;
+    padding: 16px 18px; font-size: 13px; color: var(--sub); line-height: 1.8;
+  }
+  .hint code { background: var(--accent-soft); color: var(--accent); border-radius: 5px; padding: 1px 7px; font-size: 12px; }
+  .hint b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>2026 法考 · OCR 网页书</h1>
+    <p>精讲卷 + 一本通 共 7 本 · 目录跳转、关键词直达、链接跳转、复制本页文字</p>
+    <span class="tag">在线发布版 · 入口目录</span>
+  </header>
+
+  <div class="group">精讲卷</div>
+  <div class="cards">
+    <div class="card">
+      <div class="name">刑诉法 精讲卷</div>
+      <div class="author">左宁 · 2026 众合</div>
+      <div class="meta">约 683 MB · <b>带文本层</b></div>
+      <a class="open" href="reader.html?src=https%3A%2F%2Fgh-proxy.com%2Fhttps%3A%2F%2Fgithub.com%2Fcreeperboo%2Ffa-ocr-pdf%2Freleases%2Fdownload%2Fv1%2Fxingsu_jingjiang.pdf">打开阅读</a>
+    </div>
+    <div class="card">
+      <div class="name">行政法 精讲卷</div>
+      <div class="author">李佳 · 2026 众合</div>
+      <div class="meta">约 728 MB · <b>带文本层</b></div>
+      <a class="open" href="reader.html?src=https%3A%2F%2Fgh-proxy.com%2Fhttps%3A%2F%2Fgithub.com%2Fcreeperboo%2Ffa-ocr-pdf%2Freleases%2Fdownload%2Fv1%2Fxingzheng_jingjiang.pdf">打开阅读</a>
+    </div>
+    <div class="card">
+      <div class="name">三国法 精讲</div>
+      <div class="author">杨帆 · 2026 众合</div>
+      <div class="meta">约 408 MB · <b>带文本层</b></div>
+      <a class="open" href="reader.html?src=https%3A%2F%2Fgh-proxy.com%2Fhttps%3A%2F%2Fgithub.com%2Fcreeperboo%2Ffa-ocr-pdf%2Freleases%2Fdownload%2Fv1%2Fsanguo_jingjiang.pdf">打开阅读</a>
+    </div>
+  </div>
+
+  <div class="group">一本通</div>
+  <div class="cards">
+    <div class="card">
+      <div class="name">民法 一本通 <span style="background:#dcfce7;color:#15803d;border-radius:999px;padding:2px 10px;font-size:11px;font-weight:700;margin-left:4px;">已压缩 · 快速版</span></div>
+      <div class="author">岳业鹏 · 2026 众合</div>
+      <div class="meta">约 53 MB · <b>已压缩（原 200 MB）</b> · 支持复制本页文字</div>
+      <a class="open" href="reader.html?src=https%3A%2F%2Fgh-proxy.com%2Fhttps%3A%2F%2Fgithub.com%2Fcreeperboo%2Ffa-ocr-pdf%2Freleases%2Fdownload%2Fv2%2Fminfa_yibentong.pdf">打开阅读</a>
+    </div>
+    <div class="card">
+      <div class="name">法制史 一本通</div>
+      <div class="author">龚成思 · 2026 众合</div>
+      <div class="meta">约 251 MB · <b>带文本层</b></div>
+      <a class="open" href="reader.html?src=https%3A%2F%2Fgh-proxy.com%2Fhttps%3A%2F%2Fgithub.com%2Fcreeperboo%2Ffa-ocr-pdf%2Freleases%2Fdownload%2Fv1%2Ffazhishi_yibentong.pdf">打开阅读</a>
+    </div>
+    <div class="card">
+      <div class="name">法理·宪法 一本通</div>
+      <div class="author">马峰 · 2026 众合</div>
+      <div class="meta">约 212 MB · <b>带文本层</b></div>
+      <a class="open" href="reader.html?src=https%3A%2F%2Fgh-proxy.com%2Fhttps%3A%2F%2Fgithub.com%2Fcreeperboo%2Ffa-ocr-pdf%2Freleases%2Fdownload%2Fv1%2Ffalixianfa_yibentong.pdf">打开阅读</a>
+    </div>
+    <div class="card">
+      <div class="name">刑法 一本通</div>
+      <div class="author">车润海 · 2026 众合</div>
+      <div class="meta">约 326 MB · <b>带文本层</b></div>
+      <a class="open" href="reader.html?src=https%3A%2F%2Fgh-proxy.com%2Fhttps%3A%2F%2Fgithub.com%2Fcreeperboo%2Ffa-ocr-pdf%2Freleases%2Fdownload%2Fv1%2Fxingfa_yibentong.pdf">打开阅读</a>
+    </div>
+  </div>
+
+  <div class="hint">
+    <b>直达跳转用法</b>（把链接发给任意设备打开即可）<br>
+    · 直达某页：在入口链接末尾加 <code>&amp;page=数字</code>，例如打开任意卡片后地址栏追加 <code>&amp;page=120</code><br>
+    · 直达某知识点：加 <code>&amp;q=关键词</code>，例如打开后地址栏追加 <code>&amp;q=取保候审</code>，自动搜索定位并高亮<br>
+    · 打开后点「目录」按钮可展开全书大纲，点条目即跳转
+  </div>
+</div>
+</body>
+</html>
