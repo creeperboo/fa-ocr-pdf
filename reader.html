@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCR PDF 网页书阅读器</title>
+<style>
+  :root{
+    --bg:#f2f3f5; --panel:#ffffff; --border:#d9dce1; --text:#1f2329;
+    --accent:#3370ff; --accent-weak:#e8f0ff; --hl:#fff3a8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column;}
+  header{background:var(--panel); border-bottom:1px solid var(--border); padding:8px 14px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; z-index:10;}
+  header .title{font-weight:600; font-size:15px; margin-right:8px; white-space:nowrap;}
+  header button, header input[type=text], header input[type=number], header select{
+    font-size:13px; padding:4px 10px; border:1px solid var(--border); border-radius:6px; background:#fff; color:var(--text); outline:none;
+  }
+  header button{cursor:pointer;}
+  header button:hover{background:var(--accent-weak); border-color:var(--accent);}
+  header .spacer{flex:1;}
+  #searchBox{width:220px;}
+  #pageNum{width:70px; text-align:center;}
+  #totalPages{white-space:nowrap;}
+  #dropHint{color:#8a919f; font-size:12px; margin-left:6px;}
+  main{flex:1; display:flex; overflow:hidden;}
+  #outlinePanel{width:300px; min-width:200px; background:var(--panel); border-right:1px solid var(--border); overflow:auto; padding:8px 4px; display:none; flex-direction:column;}
+  #outlinePanel.open{display:flex;}
+  #outlinePanel h3{font-size:13px; color:#646a73; padding:6px 10px; border-bottom:1px solid var(--border);}
+  .outline-item{padding:5px 10px; font-size:13px; cursor:pointer; border-radius:4px; line-height:1.5; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .outline-item:hover{background:var(--accent-weak); color:var(--accent);}
+  #viewer{flex:1; overflow:auto; padding:16px 20px 40px; position:relative;}
+  .page-wrap{position:relative; margin:0 auto 16px; box-shadow:0 2px 8px rgba(0,0,0,.12); background:#fff;}
+  .page-wrap canvas{display:block; width:100%; height:auto;}
+  .page-wrap .textLayer{position:absolute; inset:0; overflow:hidden; line-height:1; opacity:.35; mix-blend-mode:multiply;}
+  .page-wrap .textLayer span{position:absolute; white-space:pre; transform-origin:0 0; cursor:text;}
+  .page-wrap .textLayer .hl{background:var(--hl); opacity:1;}
+  .page-wrap .page-label{position:absolute; bottom:4px; right:8px; font-size:12px; color:#8a919f; background:rgba(255,255,255,.85); padding:0 6px; border-radius:4px;}
+  #empty{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#8a919f; font-size:15px; pointer-events:none;}
+  #loading{position:fixed; inset:0; background:rgba(255,255,255,.7); display:none; align-items:center; justify-content:center; z-index:99; font-size:14px; color:#646a73;}
+  #toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#1f2329; color:#fff; padding:8px 16px; border-radius:8px; font-size:13px; display:none; z-index:100;}
+</style>
+</head>
+<body>
+<header>
+  <span class="title">📖 OCR 网页书</span>
+  <button id="btnOpen">打开 PDF</button>
+  <button id="btnOutline">目录</button>
+  <input type="file" id="fileInput" accept="application/pdf" hidden>
+  <span class="spacer"></span>
+  <input type="text" id="searchBox" placeholder="搜索关键词…（Enter 定位）">
+  <button id="btnZoomOut">−</button>
+  <select id="zoomSel">
+    <option value="0.5">50%</option>
+    <option value="0.75">75%</option>
+    <option value="1" selected>100%</option>
+    <option value="1.25">125%</option>
+    <option value="1.5">150%</option>
+    <option value="2">200%</option>
+    <option value="auto">适应宽度</option>
+  </select>
+  <button id="btnZoomIn">＋</button>
+  <span class="spacer"></span>
+  <input type="number" id="pageNum" min="1" value="1">
+  <span id="totalPages">/ –</span>
+  <span id="dropHint">拖入 PDF 或点「打开 PDF」</span>
+</header>
+<main>
+  <aside id="outlinePanel"><h3>目录大纲</h3><div id="outlineTree"></div></aside>
+  <div id="viewer"><div id="empty">请打开一个 OCR 后的 PDF 文件</div></div>
+</main>
+<div id="loading">正在加载 PDF…</div>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script>
+"use strict";
+/* ========== PDF.js 初始化 ========== */
+if (window.pdfjsLib) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+}
+const viewer = document.getElementById("viewer");
+const empty = document.getElementById("empty");
+const loading = document.getElementById("loading");
+const toast = document.getElementById("toast");
+const outlineTree = document.getElementById("outlineTree");
+const outlinePanel = document.getElementById("outlinePanel");
+const pageNumInput = document.getElementById("pageNum");
+const totalPagesSpan = document.getElementById("totalPages");
+const searchBox = document.getElementById("searchBox");
+const zoomSel = document.getElementById("zoomSel");
+
+let pdfDoc = null, currentScale = 1, renderedPages = new Map(), searchPageStart = 1, pendingHighlight = null;
+
+function showToast(msg, ms) { toast.textContent = msg; toast.style.display = "block"; clearTimeout(showToast._t); showToast._t = setTimeout(() => toast.style.display = "none", ms || 2200); }
+
+function numPages() { return pdfDoc ? pdfDoc.numPages : 0; }
+
+async function gotoPage(n) {
+  n = Math.max(1, Math.min(numPages(), n));
+  pageNumInput.value = n;
+  const wrap = document.getElementById("page-" + n);
+  if (!wrap) return;
+  if (!renderedPages.has(n)) {
+    try { await renderPage(n); } catch (e) {}
+  }
+  wrap.scrollIntoView({ block: "start" });
+}
+
+/* ========== 打开文档 ========== */
+async function openPdf(data, filename, url) {
+  loading.style.display = "flex";
+  empty.style.display = "none";
+  viewer.textContent = "";
+  renderedPages.clear();
+  searchPageStart = 1;
+  try {
+    pdfDoc = await (url
+      ? pdfjsLib.getDocument({ url }).promise
+      : pdfjsLib.getDocument({ data }).promise);
+  } catch (e) {
+    loading.style.display = "none";
+    empty.style.display = "flex";
+    empty.textContent = "无法打开 PDF：" + e.message;
+    return;
+  }
+  totalPagesSpan.textContent = "/ " + pdfDoc.numPages;
+  pageNumInput.max = pdfDoc.numPages;
+  currentSrc = url || filename || null;
+  document.title = (filename ? filename + " — " : "") + "OCR 网页书";
+  renderPages();
+  loadOutline();
+  handleUrlParams();
+  loading.style.display = "none";
+  showToast("已加载 " + pdfDoc.numPages + " 页" + (filename ? "：" + filename : ""));
+}
+
+/* ========== 渲染页面（懒加载） ========== */
+function renderPages() {
+  viewer.innerHTML = "";
+  const frag = document.createDocumentFragment();
+  for (let i = 1; i <= pdfDoc.numPages; i++) {
+    const wrap = document.createElement("div");
+    wrap.className = "page-wrap";
+    wrap.id = "page-" + i;
+    const canvas = document.createElement("canvas");
+    const textDiv = document.createElement("div");
+    textDiv.className = "textLayer";
+    wrap.appendChild(canvas); wrap.appendChild(textDiv);
+    const label = document.createElement("div");
+    label.className = "page-label"; label.textContent = "第 " + i + " 页";
+    wrap.appendChild(label);
+    frag.appendChild(wrap);
+  }
+  viewer.appendChild(frag);
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) { if (e.isIntersecting) renderPage(+e.target.id.split("-")[1]); }
+  }, { root: viewer, rootMargin: "600px 0px 600px 0px" });
+  viewer.querySelectorAll(".page-wrap").forEach((w) => io.observe(w));
+  viewer._io = io;
+  viewer.addEventListener("scroll", () => {
+    const scrollTop = viewer.scrollTop + viewer.clientHeight / 2;
+    let best = 1, bestDist = Infinity;
+    viewer.querySelectorAll(".page-wrap").forEach((w) => {
+      const d = Math.abs(w.offsetTop - scrollTop);
+      if (d < bestDist) { bestDist = d; best = +w.id.split("-")[1]; }
+    });
+    pageNumInput.value = best;
+  }, { passive: true });
+}
+
+async function renderPage(n) {
+  if (!pdfDoc || renderedPages.has(n)) return;
+  const wrap = document.getElementById("page-" + n);
+  if (!wrap) return;
+  renderedPages.set(n, true);
+  try {
+    const page = await pdfDoc.getPage(n);
+    const baseWidth = wrap.clientWidth || (viewer.clientWidth - 40);
+    currentScale = baseWidth / page.getViewport({ scale: 1 }).width;
+    const vp = page.getViewport({ scale: currentScale });
+    const canvas = wrap.querySelector("canvas");
+    canvas.width = Math.floor(vp.width * window.devicePixelRatio || 1);
+    canvas.height = Math.floor(vp.height * (window.devicePixelRatio || 1));
+    canvas.style.width = vp.width + "px"; canvas.style.height = vp.height + "px";
+    wrap.style.width = vp.width + "px";
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
+    await page.render({ canvasContext: ctx, viewport: vp }).promise;
+    /* 文本层（可选取复制） */
+    const textDiv = wrap.querySelector(".textLayer");
+    textDiv.style.width = vp.width + "px"; textDiv.style.height = vp.height + "px";
+    const tl = pdfjsLib.renderTextLayer({
+      textContentSource: page.streamTextContent(),
+      container: textDiv,
+      viewport: vp,
+    });
+    await tl.promise;
+    /* 链接注释（内部跳转 + 外部 URL） */
+    const annotations = await page.getAnnotations();
+    for (const ann of annotations) {
+      if (ann.subtype !== "Link") continue;
+      const a = document.createElement("a");
+      a.style.position = "absolute";
+      a.style.left = (ann.rect[0] * currentScale) + "px";
+      a.style.top = (vp.height - ann.rect[3] * currentScale) + "px";
+      a.style.width = ((ann.rect[2] - ann.rect[0]) * currentScale) + "px";
+      a.style.height = ((ann.rect[3] - ann.rect[1]) * currentScale) + "px";
+      a.style.cursor = "pointer";
+      if (ann.url) {
+        const u = ann.url.trim();
+        if (/^https?:\/\//i.test(u)) {
+          a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer";
+        } else { a.style.cursor = "not-allowed"; }
+      } else if (ann.dest || ann.destArray) {
+        a.addEventListener("click", async (ev) => {
+          ev.preventDefault();
+          try {
+            const dest = await pdfDoc.getDestination(ann.dest || ann.destArray);
+            const ref = Array.isArray(dest) ? dest[0] : null;
+            if (ref && typeof ref === "object" && ref.num !== undefined) {
+              const idx = await pdfDoc.getPageIndex(ref);
+              gotoPage(idx + 1);
+            }
+          } catch (err) { showToast("链接跳转失败"); }
+        });
+      }
+      textDiv.appendChild(a);
+    }
+    /* 待高亮关键词 */
+    if (pendingHighlight) applyHighlight(n, pendingHighlight);
+  } catch (err) {
+    renderedPages.delete(n);
+    console.warn("page", n, err);
+  }
+}
+
+/* ========== 大纲目录 ========== */
+let currentSrc = null;
+async function loadOutline() {
+  outlineTree.textContent = "";
+  let outline = [];
+  try { outline = await pdfDoc.getOutline(); } catch (e) {}
+  if (!outline || !outline.length) {
+    /* 内置大纲为空：尝试加载同目录生成的 <名>.outline.json */
+    if (currentSrc) {
+      const outlineUrl = currentSrc.replace(/\.pdf$/i, "") + ".outline.json";
+      try {
+        const resp = await fetch(outlineUrl);
+        if (resp.ok) {
+          const ext = await resp.json();
+          if (Array.isArray(ext) && ext.length) {
+            renderOutline(ext.map((it) => ({ title: it.title, page: it.page, depth: it.level || 2 })), 0);
+            return;
+          }
+        }
+      } catch (e) {}
+    }
+    outlineTree.innerHTML = '<div style="color:#8a919f;padding:8px 10px;font-size:13px;">该 PDF 没有内置目录大纲</div>';
+    return;
+  }
+  (function build(items, container, depth) {
+    for (const item of items) {
+      const div = document.createElement("div");
+      div.className = "outline-item";
+      div.style.paddingLeft = (10 + depth * 14) + "px";
+      div.textContent = item.title || "（无标题）";
+      div.title = item.title || "";
+      div.addEventListener("click", async () => {
+        try {
+          if (item.dest) {
+            const dest = await pdfDoc.getDestination(item.dest);
+            const ref = Array.isArray(dest) ? dest[0] : null;
+            if (ref && ref.num !== undefined) { const idx = await pdfDoc.getPageIndex(ref); gotoPage(idx + 1); }
+          } else if (item.destArray) {
+            const ref = item.destArray[0];
+            if (ref && ref.num !== undefined) { const idx = await pdfDoc.getPageIndex(ref); gotoPage(idx + 1); }
+          }
+        } catch (e) { showToast("跳转失败"); }
+      });
+      container.appendChild(div);
+      if (item.items && item.items.length) build(item.items, container, depth + 1);
+    }
+  })(outline, outlineTree, 0);
+}
+
+function renderOutline(items, startDepth) {
+  for (const it of items) {
+    const div = document.createElement("div");
+    div.className = "outline-item";
+    const depth = (it.depth || 2) - startDepth;
+    div.style.paddingLeft = (10 + Math.max(0, depth - 1) * 14) + "px";
+    div.textContent = it.title || "（无标题）";
+    div.title = it.title + " · 第 " + it.page + " 页";
+    div.addEventListener("click", () => { gotoPage(it.page); outlinePanel.classList.remove("open"); });
+    outlineTree.appendChild(div);
+  }
+}
+
+/* ========== 搜索定位（?q= 与搜索框共用） ========== */
+async function searchKeyword(kw) {
+  if (!pdfDoc || !kw) return;
+  loading.style.display = "flex";
+  try {
+    for (let n = searchPageStart; n <= pdfDoc.numPages; n++) {
+      const page = await pdfDoc.getPage(n);
+      const tc = await page.getTextContent();
+      const text = tc.items.map((it) => (it.str || "")).join("");
+      if (text.includes(kw)) {
+        searchPageStart = n;
+        pendingHighlight = kw;
+        await renderPage(n);
+        if (renderedPages.has(n)) applyHighlight(n, kw); /* 已渲染页面补高亮 */
+        gotoPage(n);
+        loading.style.display = "none";
+        showToast("在第 " + n + " 页找到「" + kw + "」（继续搜索将往下找）");
+        return;
+      }
+    }
+    searchPageStart = 1;
+    loading.style.display = "none";
+    showToast("未找到「" + kw + "」");
+  } catch (e) {
+    loading.style.display = "none";
+    showToast("搜索出错");
+  }
+}
+
+function applyHighlight(n, kw) {
+  const textDiv = document.getElementById("page-" + n).querySelector(".textLayer");
+  const spans = textDiv.querySelectorAll("span");
+  spans.forEach((s) => {
+    if (s.textContent.includes(kw)) s.classList.add("hl");
+  });
+}
+
+/* ========== URL 参数入口（外链跳入） ========== */
+let urlInitDone = false;
+
+async function loadFromUrl(srcUrl) {
+  if (urlInitDone) return;
+  urlInitDone = true;
+  await openPdf(null, srcUrl.split("/").pop(), srcUrl);
+}
+
+function handleUrlParams() {
+  const params = new URLSearchParams(location.search);
+  if (params.has("src") && !urlInitDone) loadFromUrl(params.get("src"));
+  if (params.has("page")) {
+    const p = parseInt(params.get("page"), 10);
+    if (!isNaN(p)) setTimeout(() => gotoPage(p), 150);
+  }
+  if (params.has("q")) {
+    const q = params.get("q").trim();
+    if (q) setTimeout(() => searchKeyword(q), 300);
+  }
+}
+
+/* ========== 事件绑定 ========== */
+document.getElementById("btnOpen").addEventListener("click", () => document.getElementById("fileInput").click());
+document.getElementById("fileInput").addEventListener("change", (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  f.arrayBuffer().then((buf) => openPdf(new Uint8Array(buf), f.name));
+  e.target.value = "";
+});
+document.getElementById("btnOutline").addEventListener("click", () => outlinePanel.classList.toggle("open"));
+document.getElementById("btnZoomIn").addEventListener("click", () => { if (pdfDoc) currentScale = Math.min(4, currentScale * 1.2); reRenderAll(); });
+document.getElementById("btnZoomOut").addEventListener("click", () => { if (pdfDoc) currentScale = Math.max(0.3, currentScale / 1.2); reRenderAll(); });
+zoomSel.addEventListener("change", () => { if (pdfDoc) { currentScale = zoomSel.value === "auto" ? "auto" : parseFloat(zoomSel.value); reRenderAll(); } });
+searchBox.addEventListener("keydown", (e) => { if (e.key === "Enter") searchKeyword(searchBox.value.trim()); });
+pageNumInput.addEventListener("change", () => gotoPage(parseInt(pageNumInput.value, 10) || 1));
+
+function reRenderAll() {
+  renderedPages.clear();
+  renderPages();
+  const p = parseInt(pageNumInput.value, 10) || 1;
+  setTimeout(() => gotoPage(p), 100);
+}
+
+/* 拖拽打开 */
+viewer.addEventListener("dragover", (e) => e.preventDefault());
+viewer.addEventListener("drop", (e) => {
+  e.preventDefault();
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f && /\.pdf$/i.test(f.name)) f.arrayBuffer().then((buf) => openPdf(new Uint8Array(buf), f.name));
+});
+window.addEventListener("dragover", (e) => e.preventDefault());
+window.addEventListener("drop", (e) => e.preventDefault());
+
+/* 页面加载时解析 URL 参数（外链跳入入口） */
+handleUrlParams();
+</script>
+</body>
+</html>
