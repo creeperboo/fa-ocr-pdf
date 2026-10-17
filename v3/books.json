@@ -13,7 +13,7 @@
     "author": "法律硕士考试一本通 · 法制史",
     "group": "法制史",
     "pages": 379,
-    "ready": false
+    "ready": true
   },
   {
     "slug": "falixianfa",
@@ -21,7 +21,7 @@
     "author": "法律硕士考试一本通 · 法理学 / 宪法学",
     "group": "法理 · 宪法",
     "pages": 300,
-    "ready": false
+    "ready": true
   },
   {
     "slug": "xingfa",
@@ -29,7 +29,7 @@
     "author": "法律硕士考试一本通 · 刑法学",
     "group": "刑法",
     "pages": 598,
-    "ready": false
+    "ready": true
   },
   {
     "slug": "xingsu",
@@ -37,7 +37,7 @@
     "author": "法律硕士考试精讲 · 刑事诉讼法",
     "group": "刑诉",
     "pages": 377,
-    "ready": false
+    "ready": true
   },
   {
     "slug": "xingzheng",
@@ -45,7 +45,7 @@
     "author": "法律硕士考试精讲 · 行政法",
     "group": "行政法",
     "pages": 403,
-    "ready": false
+    "ready": true
   },
   {
     "slug": "sanguo",
@@ -53,6 +53,6 @@
     "author": "法律硕士考试精讲 · 三国法",
     "group": "三国法",
     "pages": 303,
-    "ready": false
+    "ready": true
   }
 ]

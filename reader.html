@@ -6,13 +6,26 @@
 <title>OCR PDF 网页书阅读器</title>
 <meta name="robots" content="noindex,nofollow">
 <script>
-/* 民法一本通已迁移到 v3 静态网页书；其余 6 本继续走旧 PDF.js 阅读器。 */
+/* 七本书都已迁移到 v3 静态网页书；旧 ?src= 链接按文件名转到对应新书。 */
 (function () {
   try {
     var params = new URLSearchParams(location.search);
     var src = params.get("src") || "";
-    if (!/minfa/i.test(src)) return;
-    var target = "v3/reader.html?book=minfa";
+    var books = [
+      ["minfa", "minfa"],
+      ["fazhishi", "fazhishi"],
+      ["falixianfa", "falixianfa"],
+      ["xingzheng", "xingzheng"],
+      ["xingsu", "xingsu"],
+      ["xingfa", "xingfa"],
+      ["sanguo", "sanguo"]
+    ];
+    var slug = "";
+    for (var i = 0; i < books.length; i++) {
+      if (new RegExp(books[i][0] + "_", "i").test(src)) { slug = books[i][1]; break; }
+    }
+    if (!slug) return;
+    var target = "v3/reader.html?book=" + slug;
     var page = parseInt(params.get("page"), 10);
     if (page > 0) target += "&page=" + page;
     var q = params.get("q");
