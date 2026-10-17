@@ -109,6 +109,49 @@ async function gotoPage(n) {
 }
 
 /* ========== 打开文档 ========== */
+/* ========== 在线 PDF：手动 Range 传输（流式首屏 + 真实进度） ========== */
+async function buildRangeTask(url, loading) {
+  let total = 0;
+  try {
+    const head = await fetch(url, { method: "HEAD" });
+    total = parseInt(head.headers.get("Content-Length") || "0", 10);
+  } catch (e) { /* HEAD 失败走退化 */ }
+  if (!total || total < 65536) {
+    /* 服务器不支持 Range / 大小未知：退化全量下载（仍有进度） */
+    const task = pdfjsLib.getDocument({ url, disableRange: true, disableStream: true });
+    task.onProgress = (p) => {
+      if (p && p.total > 0) {
+        const pct = Math.min(100, Math.round(p.loaded / p.total * 100));
+        loading.textContent = "正在加载 PDF… " + pct + "%（" + Math.round(p.loaded / 1048576) + " / " + Math.round(p.total / 1048576) + " MB）";
+      }
+    };
+    return task;
+  }
+  const init = await fetch(url, { headers: { Range: "bytes=0-65535" } });
+  const initialData = new Uint8Array(await init.arrayBuffer());
+  const transport = new pdfjsLib.PDFDataRangeTransport(total, initialData);
+  let loaded = initialData.length;
+  const inflight = new Set();
+  transport.requestDataRange = (begin, end) => {
+    const key = begin + "-" + end;
+    if (inflight.has(key)) return;
+    inflight.add(key);
+    fetch(url, { headers: { Range: "bytes=" + begin + "-" + (end - 1) } })
+      .then((r) => r.arrayBuffer())
+      .then((buf) => {
+        inflight.delete(key);
+        loaded = Math.min(total, loaded + buf.byteLength);
+        if (loading) {
+          const pct = Math.min(100, Math.round(loaded / total * 100));
+          loading.textContent = "正在加载 PDF… " + pct + "%（" + Math.round(loaded / 1048576) + " / " + Math.round(total / 1048576) + " MB）";
+        }
+        transport.onDataRange(begin, new Uint8Array(buf));
+      })
+      .catch((e) => { inflight.delete(key); transport.onDataError(e); });
+  };
+  return pdfjsLib.getDocument({ range: transport });
+}
+
 async function openPdf(data, filename, url) {
   loading.style.display = "flex";
   loading.textContent = "正在加载 PDF…";
@@ -120,23 +163,15 @@ async function openPdf(data, filename, url) {
   try {
     let task;
     if (url) {
-      /* 本地地址走 Range 流式（快、首屏秒开）；在线慢通道走全量下载（可获得精确进度条） */
+      /* 本地地址走简单流式（快）；在线通道用手动 Range 传输：流式首屏 + 真实进度 */
       const isLocal = /^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?\//i.test(url) || /^file:/i.test(url);
-      task = pdfjsLib.getDocument({
-        url,
-        disableRange: !isLocal,
-        disableStream: !isLocal,
-      });
+      if (isLocal) {
+        task = pdfjsLib.getDocument({ url });
+      } else {
+        task = await buildRangeTask(url, loading);
+      }
     } else {
       task = pdfjsLib.getDocument({ data });
-    }
-    if (task.onProgress) {
-      task.onProgress = (p) => {
-        if (p && p.total > 0) {
-          const pct = Math.min(100, Math.round(p.loaded / p.total * 100));
-          loading.textContent = "正在加载 PDF… " + pct + "%（" + Math.round(p.loaded / 1048576) + " / " + Math.round(p.total / 1048576) + " MB）";
-        }
-      };
     }
     const timer = setTimeout(() => {
       if (!pdfDoc) {
