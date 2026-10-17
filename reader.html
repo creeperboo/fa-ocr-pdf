@@ -111,14 +111,30 @@ async function gotoPage(n) {
 /* ========== 打开文档 ========== */
 async function openPdf(data, filename, url) {
   loading.style.display = "flex";
+  loading.textContent = "正在加载 PDF…";
   empty.style.display = "none";
+  empty.textContent = "";
   viewer.textContent = "";
   renderedPages.clear();
   searchPageStart = 1;
   try {
-    pdfDoc = await (url
-      ? pdfjsLib.getDocument({ url }).promise
-      : pdfjsLib.getDocument({ data }).promise);
+    const task = url
+      ? pdfjsLib.getDocument({ url })
+      : pdfjsLib.getDocument({ data });
+    if (task.onProgress) {
+      task.onProgress = (p) => {
+        if (p && p.total > 0) {
+          loading.textContent = "正在加载 PDF… " + Math.round(p.loaded / 1048576) + " / " + Math.round(p.total / 1048576) + " MB";
+        }
+      };
+    }
+    const timer = setTimeout(() => {
+      if (!pdfDoc) {
+        loading.textContent = "加载较慢（已超过 2 分钟），请耐心等待或刷新重试";
+      }
+    }, 120000);
+    pdfDoc = await task.promise;
+    clearTimeout(timer);
   } catch (e) {
     loading.style.display = "none";
     empty.style.display = "flex";
@@ -398,6 +414,13 @@ window.addEventListener("drop", (e) => e.preventDefault());
 
 /* 页面加载时解析 URL 参数（外链跳入入口） */
 handleUrlParams();
+
+/* file:// 直接打开文件时的引导 */
+if (location.protocol === "file:") {
+  if (!location.search.includes("src=")) {
+    empty.textContent = "直接双击打开时，浏览器不允许读取本地 PDF。请通过 http://127.0.0.1:8731 访问本机网页书，或点「打开 PDF」选择文件";
+  }
+}
 </script>
 </body>
 </html>
