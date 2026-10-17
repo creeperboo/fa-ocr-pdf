@@ -118,13 +118,23 @@ async function openPdf(data, filename, url) {
   renderedPages.clear();
   searchPageStart = 1;
   try {
-    const task = url
-      ? pdfjsLib.getDocument({ url })
-      : pdfjsLib.getDocument({ data });
+    let task;
+    if (url) {
+      /* 本地地址走 Range 流式（快、首屏秒开）；在线慢通道走全量下载（可获得精确进度条） */
+      const isLocal = /^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?\//i.test(url) || /^file:/i.test(url);
+      task = pdfjsLib.getDocument({
+        url,
+        disableRange: !isLocal,
+        disableStream: !isLocal,
+      });
+    } else {
+      task = pdfjsLib.getDocument({ data });
+    }
     if (task.onProgress) {
       task.onProgress = (p) => {
         if (p && p.total > 0) {
-          loading.textContent = "正在加载 PDF… " + Math.round(p.loaded / 1048576) + " / " + Math.round(p.total / 1048576) + " MB";
+          const pct = Math.min(100, Math.round(p.loaded / p.total * 100));
+          loading.textContent = "正在加载 PDF… " + pct + "%（" + Math.round(p.loaded / 1048576) + " / " + Math.round(p.total / 1048576) + " MB）";
         }
       };
     }
