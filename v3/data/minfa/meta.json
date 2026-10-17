@@ -1,0 +1,26 @@
+{
+  "slug": "minfa",
+  "title": "民法一本通",
+  "pages": 527,
+  "pageW": 1240.5,
+  "pageH": 1754.25,
+  "imgW": 1400,
+  "imgH": 1980,
+  "chunkSize": 20,
+  "chunkCount": 27,
+  "tocPages": [
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "imageTemplate": "pages/{p:04d}.webp",
+  "textTemplate": "text/chunk-{c:04d}.json",
+  "searchVersion": 2,
+  "searchBuckets": 256,
+  "searchManifest": "search.json",
+  "version": "3.1.0",
+  "builtAt": "2026-10-17 20:05:10",
+  "source": "minfa_yibentong.pdf"
+}
