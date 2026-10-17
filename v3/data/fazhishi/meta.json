@@ -1,0 +1,23 @@
+{
+  "slug": "fazhishi",
+  "title": "法制史一本通",
+  "pages": 379,
+  "pageW": 595.0,
+  "pageH": 841.0,
+  "imgW": 1400,
+  "imgH": 1979,
+  "chunkSize": 20,
+  "chunkCount": 19,
+  "tocPages": [
+    9,
+    10
+  ],
+  "imageTemplate": "pages/{p:04d}.webp",
+  "textTemplate": "text/chunk-{c:04d}.json",
+  "searchVersion": 2,
+  "searchBuckets": 256,
+  "searchManifest": "search.json",
+  "version": "3.1.0",
+  "builtAt": "2026-10-17 22:42:19",
+  "source": "fazhishi_yibentong.pdf"
+}
