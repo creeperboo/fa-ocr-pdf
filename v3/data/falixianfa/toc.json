@@ -1,0 +1,653 @@
+[
+{
+"level": 1,
+"title": "第一编 法理学",
+"page": 8,
+"y": 322.1,
+"printedPage": 3
+},
+{
+"level": 2,
+"title": "第一章 绪论",
+"page": 9,
+"y": 128.2,
+"printedPage": 3
+},
+{
+"level": 3,
+"title": "第一节 法学",
+"page": 10,
+"y": 77.8,
+"printedPage": 4
+},
+{
+"level": 3,
+"title": "第二节 法理学",
+"page": 16,
+"y": 332.8,
+"printedPage": 10
+},
+{
+"level": 2,
+"title": "第二章 法的特征与本质",
+"page": 21,
+"y": 130.2,
+"printedPage": 15
+},
+{
+"level": 3,
+"title": "第一节 法的概述",
+"page": 22,
+"y": 77.0,
+"printedPage": 16
+},
+{
+"level": 3,
+"title": "第二节 法的基本特征",
+"page": 23,
+"y": 77.0,
+"printedPage": 17
+},
+{
+"level": 3,
+"title": "第三节 法的本质",
+"page": 26,
+"y": 301.0,
+"printedPage": 20
+},
+{
+"level": 2,
+"title": "第三章 法的起源和演进",
+"page": 30,
+"y": 131.2,
+"printedPage": 24
+},
+{
+"level": 3,
+"title": "第一节 法的起源",
+"page": 30,
+"y": 668.8,
+"printedPage": 24
+},
+{
+"level": 3,
+"title": "第二节 法的演进",
+"page": 32,
+"y": 198.1,
+"printedPage": 26
+},
+{
+"level": 3,
+"title": "第三节 法律全球化",
+"page": 36,
+"y": 456.0,
+"printedPage": 30
+},
+{
+"level": 2,
+"title": "第四章 法的作用与法的价值",
+"page": 38,
+"y": 126.2,
+"printedPage": 32
+},
+{
+"level": 3,
+"title": "第一节 法的作用",
+"page": 38,
+"y": 539.9,
+"printedPage": 32
+},
+{
+"level": 3,
+"title": "第二节 法的价值",
+"page": 43,
+"y": 420.2,
+"printedPage": 37
+},
+{
+"level": 2,
+"title": "第五章 法的渊源、效力与分类",
+"page": 48,
+"y": 138.5,
+"printedPage": 42
+},
+{
+"level": 3,
+"title": "第一节 法的渊源",
+"page": 48,
+"y": 647.8,
+"printedPage": 42
+},
+{
+"level": 3,
+"title": "第二节 法的(对人、时间)效力",
+"page": 53,
+"y": 534.0,
+"printedPage": 47
+},
+{
+"level": 3,
+"title": "第三节 法的分类",
+"page": 56,
+"y": 217.8,
+"printedPage": 50
+},
+{
+"level": 2,
+"title": "第六章 法律要素与法律体系",
+"page": 58,
+"y": 129.2,
+"printedPage": 52
+},
+{
+"level": 3,
+"title": "第一节 法律要素",
+"page": 58,
+"y": 645.0,
+"printedPage": 52
+},
+{
+"level": 3,
+"title": "第二节 法律体系与法律部门",
+"page": 66,
+"y": 279.5,
+"printedPage": 60
+},
+{
+"level": 3,
+"title": "第三节 当代中国的法律体系",
+"page": 68,
+"y": 575.0,
+"printedPage": 62
+},
+{
+"level": 2,
+"title": "第七章 立法",
+"page": 72,
+"y": 129.5,
+"printedPage": 66
+},
+{
+"level": 3,
+"title": "第一节 立法概述",
+"page": 72,
+"y": 561.0,
+"printedPage": 66
+},
+{
+"level": 3,
+"title": "第二节 立法原则",
+"page": 74,
+"y": 407.8,
+"printedPage": 68
+},
+{
+"level": 3,
+"title": "第三节 立法的程序",
+"page": 76,
+"y": 80.8,
+"printedPage": 70
+},
+{
+"level": 2,
+"title": "第八章 法的实施",
+"page": 78,
+"y": 131.2,
+"printedPage": 72
+},
+{
+"level": 3,
+"title": "第一节 法的实施与法的实现",
+"page": 79,
+"y": 275.9,
+"printedPage": 73
+},
+{
+"level": 3,
+"title": "第二节 执法",
+"page": 81,
+"y": 523.8,
+"printedPage": 75
+},
+{
+"level": 3,
+"title": "第三节 司法",
+"page": 83,
+"y": 196.6,
+"printedPage": 77
+},
+{
+"level": 3,
+"title": "第四节 守法",
+"page": 89,
+"y": 77.6,
+"printedPage": 83
+},
+{
+"level": 3,
+"title": "第五节 法律监督",
+"page": 90,
+"y": 290.0,
+"printedPage": 84
+},
+{
+"level": 2,
+"title": "第九章 法律职业与法律方法",
+"page": 93,
+"y": 137.5,
+"printedPage": 87
+},
+{
+"level": 3,
+"title": "第一节 法律职业",
+"page": 94,
+"y": 78.7,
+"printedPage": 88
+},
+{
+"level": 3,
+"title": "第二节 法律职业伦理",
+"page": 96,
+"y": 484.5,
+"printedPage": 90
+},
+{
+"level": 3,
+"title": "第三节 法律解释",
+"page": 98,
+"y": 408.7,
+"printedPage": 92
+},
+{
+"level": 3,
+"title": "第四节 法律推理",
+"page": 102,
+"y": 323.2,
+"printedPage": 96
+},
+{
+"level": 3,
+"title": "第五节 法律论证",
+"page": 104,
+"y": 402.0,
+"printedPage": 98
+},
+{
+"level": 2,
+"title": "第十章 法律关系",
+"page": 106,
+"y": 134.5,
+"printedPage": 100
+},
+{
+"level": 3,
+"title": "第一节 法律关系概述",
+"page": 107,
+"y": 82.0,
+"printedPage": 101
+},
+{
+"level": 3,
+"title": "第二节 法律关系的构成要素",
+"page": 109,
+"y": 438.0,
+"printedPage": 103
+},
+{
+"level": 3,
+"title": "第三节 法律关系的产生、变更和消灭",
+"page": 113,
+"y": 202.2,
+"printedPage": 107
+},
+{
+"level": 2,
+"title": "第十一章 法律责任与法律制裁",
+"page": 114,
+"y": 134.5,
+"printedPage": 108
+},
+{
+"level": 3,
+"title": "第一节 法律责任",
+"page": 114,
+"y": 550.0,
+"printedPage": 108
+},
+{
+"level": 3,
+"title": "第二节 法律制裁",
+"page": 117,
+"y": 215.2,
+"printedPage": 111
+},
+{
+"level": 2,
+"title": "第十二章 法治",
+"page": 118,
+"y": 137.5,
+"printedPage": 112
+},
+{
+"level": 3,
+"title": "第一节 法治概述",
+"page": 119,
+"y": 84.0,
+"printedPage": 113
+},
+{
+"level": 3,
+"title": "第二节 习近平法治思想与全面依法治国",
+"page": 123,
+"y": 530.8,
+"printedPage": 117
+},
+{
+"level": 2,
+"title": "第十三章 法与社会",
+"page": 133,
+"y": 141.5,
+"printedPage": 127
+},
+{
+"level": 3,
+"title": "第一节 法与社会的一般关系",
+"page": 134,
+"y": 86.5,
+"printedPage": 128
+},
+{
+"level": 3,
+"title": "第二节 法与经济",
+"page": 137,
+"y": 482.1,
+"printedPage": 131
+},
+{
+"level": 3,
+"title": "第三节 法与政治",
+"page": 139,
+"y": 221.6,
+"printedPage": 133
+},
+{
+"level": 3,
+"title": "第四节 法与文化",
+"page": 141,
+"y": 596.8,
+"printedPage": 135
+},
+{
+"level": 3,
+"title": "第五节 法与道德",
+"page": 143,
+"y": 345.8,
+"printedPage": 137
+},
+{
+"level": 3,
+"title": "第六节 法与宗教",
+"page": 147,
+"y": 407.9,
+"printedPage": 141
+},
+{
+"level": 1,
+"title": "第二编 宪法学",
+"page": 149,
+"y": 315.6,
+"printedPage": 145
+},
+{
+"level": 2,
+"title": "第一章 宪法基本理论",
+"page": 151,
+"y": 134.2,
+"printedPage": 145
+},
+{
+"level": 3,
+"title": "第一节 宪法概述",
+"page": 152,
+"y": 82.0,
+"printedPage": 146
+},
+{
+"level": 3,
+"title": "第二节 宪法的产生和发展历史",
+"page": 156,
+"y": 121.9,
+"printedPage": 150
+},
+{
+"level": 3,
+"title": "第三节 宪法原则",
+"page": 166,
+"y": 324.8,
+"printedPage": 160
+},
+{
+"level": 3,
+"title": "第四节 宪法规范",
+"page": 169,
+"y": 434.1,
+"printedPage": 163
+},
+{
+"level": 2,
+"title": "第二章 宪法的制定与实施",
+"page": 171,
+"y": 133.2,
+"printedPage": 165
+},
+{
+"level": 3,
+"title": "第一节 宪法的制定",
+"page": 171,
+"y": 645.8,
+"printedPage": 165
+},
+{
+"level": 3,
+"title": "第二节 宪法的解释",
+"page": 173,
+"y": 204.8,
+"printedPage": 167
+},
+{
+"level": 3,
+"title": "第三节 宪法的修改",
+"page": 174,
+"y": 210.2,
+"printedPage": 168
+},
+{
+"level": 3,
+"title": "第四节 合宪性审查",
+"page": 174,
+"y": 416.8,
+"printedPage": 168
+},
+{
+"level": 2,
+"title": "第三章 立法法",
+"page": 178,
+"y": 131.5,
+"printedPage": 172
+},
+{
+"level": 2,
+"title": "第四章 国家基本制度",
+"page": 192,
+"y": 129.5,
+"printedPage": 186
+},
+{
+"level": 3,
+"title": "第一节 国家性质",
+"page": 193,
+"y": 443.8,
+"printedPage": 187
+},
+{
+"level": 3,
+"title": "第二节 政权组织形式",
+"page": 199,
+"y": 337.3,
+"printedPage": 193
+},
+{
+"level": 3,
+"title": "第三节 选举制度",
+"page": 202,
+"y": 505.2,
+"printedPage": 196
+},
+{
+"level": 3,
+"title": "第四节 民族区域自治制度",
+"page": 211,
+"y": 379.9,
+"printedPage": 205
+},
+{
+"level": 3,
+"title": "第五节 政党制度",
+"page": 213,
+"y": 563.9,
+"printedPage": 207
+},
+{
+"level": 3,
+"title": "第六节 国家结构形式",
+"page": 215,
+"y": 325.8,
+"printedPage": 209
+},
+{
+"level": 3,
+"title": "第七节 特别行政区制度",
+"page": 217,
+"y": 391.0,
+"printedPage": 211
+},
+{
+"level": 3,
+"title": "第八节 基层群众自治制度",
+"page": 223,
+"y": 224.0,
+"printedPage": 217
+},
+{
+"level": 2,
+"title": "第五章 公民的基本权利和义务",
+"page": 228,
+"y": 131.5,
+"printedPage": 222
+},
+{
+"level": 3,
+"title": "第一节 公民的基本权利和义务概述",
+"page": 229,
+"y": 287.0,
+"printedPage": 223
+},
+{
+"level": 3,
+"title": "第二节 公民的基本权利",
+"page": 232,
+"y": 193.0,
+"printedPage": 226
+},
+{
+"level": 3,
+"title": "第三节 公民的基本义务",
+"page": 239,
+"y": 76.2,
+"printedPage": 233
+},
+{
+"level": 2,
+"title": "第六章 国家机构",
+"page": 241,
+"y": 132.2,
+"printedPage": 235
+},
+{
+"level": 3,
+"title": "第一节 国家机构概述",
+"page": 242,
+"y": 232.5,
+"printedPage": 236
+},
+{
+"level": 3,
+"title": "第二节 全国人大和全国人大常委会",
+"page": 244,
+"y": 543.5,
+"printedPage": 238
+},
+{
+"level": 3,
+"title": "第三节 国家主席",
+"page": 253,
+"y": 73.8,
+"printedPage": 247
+},
+{
+"level": 3,
+"title": "第四节 国务院",
+"page": 254,
+"y": 327.0,
+"printedPage": 248
+},
+{
+"level": 3,
+"title": "第五节 中央军事委员会",
+"page": 256,
+"y": 409.5,
+"printedPage": 250
+},
+{
+"level": 3,
+"title": "第六节 监察委员会",
+"page": 257,
+"y": 229.0,
+"printedPage": 251
+},
+{
+"level": 3,
+"title": "第七节 人民法院和人民检察院",
+"page": 258,
+"y": 74.0,
+"printedPage": 252
+},
+{
+"level": 3,
+"title": "第八节 国家标志",
+"page": 264,
+"y": 239.9,
+"printedPage": 258
+},
+{
+"level": 3,
+"title": "第九节 地方国家机关",
+"page": 265,
+"y": 558.0,
+"printedPage": 259
+},
+{
+"level": 1,
+"title": "附录 一宪法典全文梳理",
+"page": 270,
+"y": 115.9,
+"printedPage": 264
+},
+{
+"level": 1,
+"title": "附录 二《七言宪法》",
+"page": 292,
+"y": 101.9,
+"printedPage": 286
+}
+]
