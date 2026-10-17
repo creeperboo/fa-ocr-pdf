@@ -1,0 +1,24 @@
+{
+  "slug": "xingzheng",
+  "title": "行政法精讲卷",
+  "pages": 403,
+  "pageW": 517.2,
+  "pageH": 764.9,
+  "imgW": 1400,
+  "imgH": 2070,
+  "chunkSize": 20,
+  "chunkCount": 21,
+  "tocPages": [
+    8,
+    9,
+    10
+  ],
+  "imageTemplate": "pages/{p:04d}.webp",
+  "textTemplate": "text/chunk-{c:04d}.json",
+  "searchVersion": 2,
+  "searchBuckets": 256,
+  "searchManifest": "search.json",
+  "version": "3.1.0",
+  "builtAt": "2026-10-17 22:39:53",
+  "source": "xingzheng_jingjiang.pdf"
+}
