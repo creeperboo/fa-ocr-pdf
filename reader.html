@@ -247,7 +247,10 @@ async function loadOutline() {
     if (currentSrc) {
       const candidates = [currentSrc.replace(/\.pdf$/i, "") + ".outline.json"];
       const fn = decodeURIComponent(currentSrc.split("/").pop() || "").replace(/\.pdf$/i, "");
-      if (fn && currentSrc.indexOf(fn + ".pdf") !== -1) candidates.push("./" + fn + ".outline.json");
+      if (fn && currentSrc.indexOf(fn + ".pdf") !== -1) {
+        candidates.push("./" + fn + ".outline.json");
+        candidates.push("./pdfs/" + fn + ".outline.json");
+      }
       for (const outlineUrl of candidates) {
         try {
           const resp = await fetch(outlineUrl);
