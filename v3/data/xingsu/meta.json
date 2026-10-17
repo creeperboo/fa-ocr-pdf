@@ -1,0 +1,25 @@
+{
+  "slug": "xingsu",
+  "title": "刑诉法精讲卷",
+  "pages": 377,
+  "pageW": 515.8,
+  "pageH": 765.1,
+  "imgW": 1400,
+  "imgH": 2077,
+  "chunkSize": 20,
+  "chunkCount": 19,
+  "tocPages": [
+    12,
+    13,
+    14,
+    15
+  ],
+  "imageTemplate": "pages/{p:04d}.webp",
+  "textTemplate": "text/chunk-{c:04d}.json",
+  "searchVersion": 2,
+  "searchBuckets": 256,
+  "searchManifest": "search.json",
+  "version": "3.1.0",
+  "builtAt": "2026-10-17 22:37:47",
+  "source": "xingsu_jingjiang.pdf"
+}

@@ -1,0 +1,737 @@
+[
+{
+"level": 1,
+"title": "第一编 总则",
+"page": 9,
+"y": 299.4,
+"printedPage": 5
+},
+{
+"level": 2,
+"title": "第一章 刑法论(绪论)",
+"page": 10,
+"y": 138.2,
+"printedPage": 5
+},
+{
+"level": 3,
+"title": "第一节 刑法基础论",
+"page": 10,
+"y": 435.3,
+"printedPage": 5
+},
+{
+"level": 3,
+"title": "第二节 刑法目的论",
+"page": 14,
+"y": 93.1,
+"printedPage": 9
+},
+{
+"level": 2,
+"title": "第二章 犯罪概念",
+"page": 31,
+"y": 140.5,
+"printedPage": 26
+},
+{
+"level": 3,
+"title": "第一节 犯罪的定义",
+"page": 32,
+"y": 92.1,
+"printedPage": 27
+},
+{
+"level": 3,
+"title": "第二节 我国刑法中的犯罪分类",
+"page": 34,
+"y": 545.8,
+"printedPage": 29
+},
+{
+"level": 2,
+"title": "第三章 犯罪构成",
+"page": 36,
+"y": 140.7,
+"printedPage": 31
+},
+{
+"level": 3,
+"title": "第一节 犯罪构成概述",
+"page": 36,
+"y": 452.0,
+"printedPage": 31
+},
+{
+"level": 3,
+"title": "第二节 犯罪构成的分类",
+"page": 39,
+"y": 92.1,
+"printedPage": 34
+},
+{
+"level": 2,
+"title": "第四章 犯罪客体",
+"page": 41,
+"y": 141.7,
+"printedPage": 36
+},
+{
+"level": 3,
+"title": "第一节 犯罪客体的概念及其内容",
+"page": 41,
+"y": 414.0,
+"printedPage": 36
+},
+{
+"level": 3,
+"title": "第二节 犯罪客体与犯罪对象",
+"page": 45,
+"y": 92.0,
+"printedPage": 40
+},
+{
+"level": 2,
+"title": "第五章 犯罪客观方面",
+"page": 47,
+"y": 143.5,
+"printedPage": 42
+},
+{
+"level": 3,
+"title": "第一节 危害行为",
+"page": 47,
+"y": 497.8,
+"printedPage": 42
+},
+{
+"level": 3,
+"title": "第二节 危害结果",
+"page": 54,
+"y": 198.1,
+"printedPage": 49
+},
+{
+"level": 3,
+"title": "第三节 刑法中的因果关系",
+"page": 55,
+"y": 560.3,
+"printedPage": 50
+},
+{
+"level": 3,
+"title": "第四节 犯罪的时间、地点、方法",
+"page": 62,
+"y": 308.8,
+"printedPage": 57
+},
+{
+"level": 2,
+"title": "第六章 犯罪主体",
+"page": 64,
+"y": 140.5,
+"printedPage": 59
+},
+{
+"level": 3,
+"title": "第一节 刑事责任年龄",
+"page": 64,
+"y": 576.2,
+"printedPage": 59
+},
+{
+"level": 3,
+"title": "第二节 刑事责任能力",
+"page": 68,
+"y": 416.0,
+"printedPage": 63
+},
+{
+"level": 3,
+"title": "第三节 一般主体与特殊主体",
+"page": 71,
+"y": 91.7,
+"printedPage": 66
+},
+{
+"level": 3,
+"title": "第四节 单位犯罪",
+"page": 73,
+"y": 182.9,
+"printedPage": 68
+},
+{
+"level": 2,
+"title": "第七章 犯罪主观方面",
+"page": 77,
+"y": 156.5,
+"printedPage": 72
+},
+{
+"level": 3,
+"title": "第一节 犯罪主观方面概述",
+"page": 77,
+"y": 445.2,
+"printedPage": 72
+},
+{
+"level": 3,
+"title": "第二节 犯罪故意",
+"page": 78,
+"y": 307.6,
+"printedPage": 73
+},
+{
+"level": 3,
+"title": "第三节 犯罪过失",
+"page": 82,
+"y": 244.1,
+"printedPage": 77
+},
+{
+"level": 3,
+"title": "第四节 无罪过事件",
+"page": 83,
+"y": 547.9,
+"printedPage": 78
+},
+{
+"level": 3,
+"title": "第五节 罪过与无罪过事件对比",
+"page": 86,
+"y": 348.4,
+"printedPage": 81
+},
+{
+"level": 3,
+"title": "第六节 犯罪目的与动机",
+"page": 89,
+"y": 92.8,
+"printedPage": 84
+},
+{
+"level": 3,
+"title": "第七节 刑法中的认识错误",
+"page": 91,
+"y": 90.1,
+"printedPage": 86
+},
+{
+"level": 2,
+"title": "第八章 正当化事由",
+"page": 100,
+"y": 131.5,
+"printedPage": 95
+},
+{
+"level": 3,
+"title": "第一节 正当化事由概述",
+"page": 100,
+"y": 551.2,
+"printedPage": 95
+},
+{
+"level": 3,
+"title": "第二节 正当防卫",
+"page": 102,
+"y": 488.3,
+"printedPage": 97
+},
+{
+"level": 3,
+"title": "第三节 紧急避险",
+"page": 111,
+"y": 530.4,
+"printedPage": 106
+},
+{
+"level": 2,
+"title": "第九章 故意犯罪的停止形态",
+"page": 117,
+"y": 139.5,
+"printedPage": 112
+},
+{
+"level": 3,
+"title": "第一节 故意犯罪的停止形态概述",
+"page": 117,
+"y": 562.0,
+"printedPage": 112
+},
+{
+"level": 3,
+"title": "第二节 犯罪既遂",
+"page": 120,
+"y": 376.3,
+"printedPage": 115
+},
+{
+"level": 3,
+"title": "第三节 犯罪预备",
+"page": 124,
+"y": 204.1,
+"printedPage": 119
+},
+{
+"level": 3,
+"title": "第四节 犯罪未遂",
+"page": 127,
+"y": 93.8,
+"printedPage": 122
+},
+{
+"level": 3,
+"title": "第五节 犯罪中止",
+"page": 132,
+"y": 319.1,
+"printedPage": 127
+},
+{
+"level": 2,
+"title": "第十章 共同犯罪",
+"page": 139,
+"y": 141.5,
+"printedPage": 134
+},
+{
+"level": 3,
+"title": "第一节 共同犯罪的概念及其构成",
+"page": 140,
+"y": 88.7,
+"printedPage": 135
+},
+{
+"level": 3,
+"title": "第二节 共同犯罪的形式",
+"page": 148,
+"y": 357.1,
+"printedPage": 143
+},
+{
+"level": 3,
+"title": "第三节 共同犯罪人的种类及其刑事责任",
+"page": 154,
+"y": 414.2,
+"printedPage": 149
+},
+{
+"level": 3,
+"title": "第四节 共同犯罪与犯罪的停止形态",
+"page": 162,
+"y": 392.1,
+"printedPage": 157
+},
+{
+"level": 2,
+"title": "第十一章 罪数形态",
+"page": 166,
+"y": 142.5,
+"printedPage": 161
+},
+{
+"level": 3,
+"title": "第一节 罪数形态概述",
+"page": 166,
+"y": 601.2,
+"printedPage": 161
+},
+{
+"level": 3,
+"title": "第二节 实质的一罪",
+"page": 169,
+"y": 491.9,
+"printedPage": 164
+},
+{
+"level": 3,
+"title": "第三节 法定的一罪",
+"page": 178,
+"y": 216.1,
+"printedPage": 173
+},
+{
+"level": 3,
+"title": "第四节 处断的一罪",
+"page": 182,
+"y": 644.3,
+"printedPage": 177
+},
+{
+"level": 3,
+"title": "第五节 罪数问题的解题思路",
+"page": 190,
+"y": 256.2,
+"printedPage": 185
+},
+{
+"level": 2,
+"title": "第十二章 刑事责任",
+"page": 191,
+"y": 140.7,
+"printedPage": 186
+},
+{
+"level": 3,
+"title": "第一节 刑事责任概述",
+"page": 192,
+"y": 91.2,
+"printedPage": 187
+},
+{
+"level": 3,
+"title": "第二节 刑事责任的根据和解决方式",
+"page": 194,
+"y": 90.2,
+"printedPage": 189
+},
+{
+"level": 2,
+"title": "第十三章 刑罚概述",
+"page": 196,
+"y": 140.7,
+"printedPage": 191
+},
+{
+"level": 3,
+"title": "第一节 刑罚的概念和目的",
+"page": 197,
+"y": 90.2,
+"printedPage": 192
+},
+{
+"level": 3,
+"title": "第二节 刑罚的种类和体系",
+"page": 199,
+"y": 271.1,
+"printedPage": 194
+},
+{
+"level": 3,
+"title": "第三节 主刑",
+"page": 200,
+"y": 508.1,
+"printedPage": 195
+},
+{
+"level": 3,
+"title": "第四节 附加刑",
+"page": 206,
+"y": 377.1,
+"printedPage": 201
+},
+{
+"level": 3,
+"title": "第五节 非刑罚处理方法",
+"page": 211,
+"y": 472.3,
+"printedPage": 206
+},
+{
+"level": 2,
+"title": "第十四章 量刑",
+"page": 214,
+"y": 145.7,
+"printedPage": 209
+},
+{
+"level": 3,
+"title": "第一节 量刑的概念和原则",
+"page": 214,
+"y": 576.0,
+"printedPage": 209
+},
+{
+"level": 3,
+"title": "第二节 量刑情节",
+"page": 215,
+"y": 655.1,
+"printedPage": 210
+},
+{
+"level": 3,
+"title": "第三节 累犯",
+"page": 220,
+"y": 93.1,
+"printedPage": 215
+},
+{
+"level": 3,
+"title": "第四节 自首与坦白",
+"page": 223,
+"y": 303.8,
+"printedPage": 218
+},
+{
+"level": 3,
+"title": "第五节 立功",
+"page": 230,
+"y": 88.8,
+"printedPage": 225
+},
+{
+"level": 3,
+"title": "第六节 数罪并罚",
+"page": 234,
+"y": 91.2,
+"printedPage": 229
+},
+{
+"level": 3,
+"title": "第七节 缓刑",
+"page": 238,
+"y": 245.1,
+"printedPage": 233
+},
+{
+"level": 2,
+"title": "第十五章 刑罚执行制度",
+"page": 243,
+"y": 136.7,
+"printedPage": 238
+},
+{
+"level": 3,
+"title": "第一节 减刑",
+"page": 243,
+"y": 439.8,
+"printedPage": 238
+},
+{
+"level": 3,
+"title": "第二节 假释",
+"page": 246,
+"y": 455.1,
+"printedPage": 241
+},
+{
+"level": 2,
+"title": "第十六章 刑罚消灭制度",
+"page": 254,
+"y": 145.5,
+"printedPage": 249
+},
+{
+"level": 3,
+"title": "第一节 刑罚消灭概述",
+"page": 255,
+"y": 96.7,
+"printedPage": 250
+},
+{
+"level": 3,
+"title": "第二节 时效",
+"page": 255,
+"y": 567.8,
+"printedPage": 250
+},
+{
+"level": 3,
+"title": "第三节 赦免",
+"page": 259,
+"y": 232.2,
+"printedPage": 254
+},
+{
+"level": 1,
+"title": "第二编 分则",
+"page": 260,
+"y": 297.1,
+"printedPage": 257
+},
+{
+"level": 2,
+"title": "第十七章 刑法各论概述",
+"page": 262,
+"y": 140.7,
+"printedPage": 257
+},
+{
+"level": 3,
+"title": "第一节 刑法各论的研究对象和体系",
+"page": 262,
+"y": 554.5,
+"printedPage": 257
+},
+{
+"level": 3,
+"title": "第二节 罪状、罪名、法定刑",
+"page": 263,
+"y": 621.1,
+"printedPage": 258
+},
+{
+"level": 2,
+"title": "第十八章 危害国家安全罪",
+"page": 268,
+"y": 142.7,
+"printedPage": 263
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 268,
+"y": 344.2,
+"printedPage": 263
+},
+{
+"level": 3,
+"title": "第二节 具体罪名",
+"page": 269,
+"y": 91.8,
+"printedPage": 264
+},
+{
+"level": 2,
+"title": "第十九章 危害公共安全罪",
+"page": 276,
+"y": 137.5,
+"printedPage": 271
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 276,
+"y": 510.2,
+"printedPage": 271
+},
+{
+"level": 3,
+"title": "第二节 具体罪名",
+"page": 277,
+"y": 632.3,
+"printedPage": 272
+},
+{
+"level": 2,
+"title": "第二十章 破坏社会主义市场经济秩序罪",
+"page": 317,
+"y": 143.7,
+"printedPage": 312
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 317,
+"y": 432.2,
+"printedPage": 312
+},
+{
+"level": 3,
+"title": "第二节 具体罪名",
+"page": 319,
+"y": 275.8,
+"printedPage": 314
+},
+{
+"level": 2,
+"title": "第二十一章 侵犯公民人身权利、民主权利罪",
+"page": 372,
+"y": 140.7,
+"printedPage": 367
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 372,
+"y": 355.0,
+"printedPage": 367
+},
+{
+"level": 3,
+"title": "第二节 具体罪名",
+"page": 374,
+"y": 90.1,
+"printedPage": 369
+},
+{
+"level": 2,
+"title": "第二十二章 侵犯财产罪",
+"page": 422,
+"y": 138.7,
+"printedPage": 417
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 422,
+"y": 490.0,
+"printedPage": 417
+},
+{
+"level": 3,
+"title": "第二节 财产犯罪的共性问题",
+"page": 423,
+"y": 387.6,
+"printedPage": 418
+},
+{
+"level": 3,
+"title": "第三节 具体罪名",
+"page": 429,
+"y": 483.1,
+"printedPage": 424
+},
+{
+"level": 2,
+"title": "第二十三章 妨害社会管理秩序罪",
+"page": 475,
+"y": 140.7,
+"printedPage": 470
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 475,
+"y": 332.2,
+"printedPage": 470
+},
+{
+"level": 3,
+"title": "第二节 具体罪名",
+"page": 477,
+"y": 457.1,
+"printedPage": 472
+},
+{
+"level": 2,
+"title": "第二十四章 贪污贿赂罪",
+"page": 558,
+"y": 144.5,
+"printedPage": 553
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 558,
+"y": 383.7,
+"printedPage": 553
+},
+{
+"level": 3,
+"title": "第二节 具体罪名",
+"page": 559,
+"y": 263.8,
+"printedPage": 554
+},
+{
+"level": 2,
+"title": "第二十五章 渎职罪",
+"page": 582,
+"y": 139.7,
+"printedPage": 577
+},
+{
+"level": 3,
+"title": "第一节 本章概述",
+"page": 582,
+"y": 399.2,
+"printedPage": 577
+},
+{
+"level": 3,
+"title": "第二节 具体罪名",
+"page": 583,
+"y": 358.1,
+"printedPage": 578
+}
+]
