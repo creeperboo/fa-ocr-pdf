@@ -243,19 +243,23 @@ async function loadOutline() {
   let outline = [];
   try { outline = await pdfDoc.getOutline(); } catch (e) {}
   if (!outline || !outline.length) {
-    /* 内置大纲为空：尝试加载同目录生成的 <名>.outline.json */
+    /* 内置大纲为空：尝试加载生成的 <名>.outline.json（优先 src 推断，兜底同源） */
     if (currentSrc) {
-      const outlineUrl = currentSrc.replace(/\.pdf$/i, "") + ".outline.json";
-      try {
-        const resp = await fetch(outlineUrl);
-        if (resp.ok) {
-          const ext = await resp.json();
-          if (Array.isArray(ext) && ext.length) {
-            renderOutline(ext.map((it) => ({ title: it.title, page: it.page, depth: it.level || 2 })), 0);
-            return;
+      const candidates = [currentSrc.replace(/\.pdf$/i, "") + ".outline.json"];
+      const fn = decodeURIComponent(currentSrc.split("/").pop() || "").replace(/\.pdf$/i, "");
+      if (fn && currentSrc.indexOf(fn + ".pdf") !== -1) candidates.push("./" + fn + ".outline.json");
+      for (const outlineUrl of candidates) {
+        try {
+          const resp = await fetch(outlineUrl);
+          if (resp.ok) {
+            const ext = await resp.json();
+            if (Array.isArray(ext) && ext.length) {
+              renderOutline(ext.map((it) => ({ title: it.title, page: it.page, depth: it.level || 2 })), 0);
+              return;
+            }
           }
-        }
-      } catch (e) {}
+        } catch (e) {}
+      }
     }
     outlineTree.innerHTML = '<div style="color:#8a919f;padding:8px 10px;font-size:13px;">该 PDF 没有内置目录大纲</div>';
     return;
