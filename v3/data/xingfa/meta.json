@@ -1,0 +1,26 @@
+{
+  "slug": "xingfa",
+  "title": "刑法一本通",
+  "pages": 598,
+  "pageW": 595.0,
+  "pageH": 841.0,
+  "imgW": 1400,
+  "imgH": 1979,
+  "chunkSize": 20,
+  "chunkCount": 30,
+  "tocPages": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "imageTemplate": "pages/{p:04d}.webp",
+  "textTemplate": "text/chunk-{c:04d}.json",
+  "searchVersion": 2,
+  "searchBuckets": 256,
+  "searchManifest": "search.json",
+  "version": "3.1.0",
+  "builtAt": "2026-10-17 22:42:05",
+  "source": "xingfa_yibentong.pdf"
+}
