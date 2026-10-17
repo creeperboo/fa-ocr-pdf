@@ -61,9 +61,11 @@
     <option value="auto">适应宽度</option>
   </select>
   <button id="btnZoomIn">＋</button>
+  <button id="btnCopy" title="复制当前页文字（部分 OCR PDF 不支持鼠标选中，用此按钮获取文字）">复制本页文字</button>
   <span class="spacer"></span>
   <input type="number" id="pageNum" min="1" value="1">
   <span id="totalPages">/ –</span>
+  <span id="ver" title="网页书版本号（与交付告知一致即非缓存旧版）">v2.2</span>
   <span id="dropHint">拖入 PDF 或点「打开 PDF」</span>
 </header>
 <main>
@@ -192,6 +194,7 @@ async function openPdf(data, filename, url) {
   document.title = (filename ? filename + " — " : "") + "OCR 网页书";
   renderPages();
   loadOutline();
+  loadTextJson();
   handleUrlParams();
   loading.style.display = "none";
   syncZoomSel();
@@ -301,6 +304,7 @@ async function renderPage(n) {
 
 /* ========== 大纲目录 ========== */
 let currentSrc = null;
+let textPages = null; /* 外部预提取的全文（页序数组），用于复制本页文字与搜索 */
 async function loadOutline() {
   outlineTree.textContent = "";
   let outline = [];
@@ -368,11 +372,88 @@ function renderOutline(items, startDepth) {
   }
 }
 
+/* ========== 预提取全文（text.json）：复制本页文字 + 搜索兜底 ========== */
+async function loadTextJson() {
+  textPages = null;
+  if (!currentSrc) return;
+  const fn = decodeURIComponent(currentSrc.split("/").pop() || "").replace(/\.pdf$/i, "");
+  const candidates = [
+    currentSrc.replace(/\.pdf$/i, "") + ".text.json",
+    "./" + fn + ".text.json",
+    "./pdfs/" + fn + ".text.json",
+  ];
+  for (const tUrl of candidates) {
+    try {
+      const resp = await fetch(tUrl);
+      if (resp.ok) {
+        const j = await resp.json();
+        if (j && Array.isArray(j.pages) && j.pages.length) {
+          textPages = j.pages;
+          return;
+        }
+      }
+    } catch (e) {}
+  }
+}
+
+async function copyPageText() {
+  if (!pdfDoc) { showToast("请先打开 PDF"); return; }
+  const n = parseInt(pageNumInput.value, 10) || 1;
+  let text = "";
+  if (textPages && textPages[n - 1] != null) {
+    text = textPages[n - 1];
+  } else {
+    try {
+      const page = await pdfDoc.getPage(n);
+      const tc = await page.getTextContent();
+      text = tc.items.map((it) => it.str || "").join("");
+    } catch (e) {}
+  }
+  text = (text || "").trim();
+  if (!text) { showToast("第 " + n + " 页没有可复制的文字"); return; }
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast("已复制第 " + n + " 页文字（" + text.length + " 字）");
+  } catch (e) {
+    /* 降级：execCommand（http 环境 / 未授权 clipboard API 时仍可用） */
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch (e2) {}
+      document.body.removeChild(ta);
+      if (ok) { showToast("已复制第 " + n + " 页文字（" + text.length + " 字）"); return; }
+    } catch (e3) {}
+    showToast("复制失败：浏览器未授权剪贴板，请手动复制页面文字");
+  }
+}
+
 /* ========== 搜索定位（?q= 与搜索框共用） ========== */
 async function searchKeyword(kw) {
   if (!pdfDoc || !kw) return;
   loading.style.display = "flex";
   try {
+    if (textPages && textPages.length) {
+      /* 优先使用外部预提取全文（此 PDF 文本层 PDF.js 读不出） */
+      for (let n = searchPageStart; n <= pdfDoc.numPages; n++) {
+        if ((textPages[n - 1] || "").includes(kw)) {
+          searchPageStart = n;
+          pendingHighlight = kw;
+          gotoPage(n);
+          loading.style.display = "none";
+          showToast("在第 " + n + " 页找到「" + kw + "」（继续搜索将往下找）");
+          return;
+        }
+      }
+      searchPageStart = 1;
+      loading.style.display = "none";
+      showToast("未找到「" + kw + "」");
+      return;
+    }
     for (let n = searchPageStart; n <= pdfDoc.numPages; n++) {
       const page = await pdfDoc.getPage(n);
       const tc = await page.getTextContent();
@@ -462,6 +543,7 @@ zoomSel.addEventListener("change", () => {
 });
 searchBox.addEventListener("keydown", (e) => { if (e.key === "Enter") searchKeyword(searchBox.value.trim()); });
 pageNumInput.addEventListener("change", () => gotoPage(parseInt(pageNumInput.value, 10) || 1));
+document.getElementById("btnCopy").addEventListener("click", copyPageText);
 
 function reRenderAll() {
   renderedPages.clear();
